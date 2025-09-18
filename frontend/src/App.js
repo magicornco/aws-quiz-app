@@ -19,15 +19,41 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Arial', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   #root {
     min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Responsive font sizes */
+  @media (max-width: 1920px) {
+    body {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    body {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    body {
+      font-size: 10px;
+    }
   }
 `;
 
 const AppContainer = styled.div`
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ErrorMessage = styled.div`
@@ -78,9 +104,6 @@ function App() {
   };
 
   useEffect(() => {
-    // Set zoom to 80% on page load
-    document.body.style.zoom = '0.8';
-    
     // Check API health on app start
     checkAPIHealth();
     // Load leaderboard on app start
