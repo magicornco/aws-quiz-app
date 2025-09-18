@@ -15,14 +15,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
-  padding-top: 20px;
+  padding: 10px;
+  padding-top: 10px;
   font-family: 'Arial', sans-serif;
   position: relative;
 `;
 
 const LogoContainer = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   animation: float 3s ease-in-out infinite;
   
   @keyframes float {
@@ -32,43 +32,30 @@ const LogoContainer = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 350px;
-  height: 350px;
+  width: 250px;
+  height: 250px;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 `;
 
 const Title = styled.h1`
   color: white;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 `;
 
 const Subtitle = styled.h2`
   color: #FFD700;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-align: center;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
-`;
-
-const TimeInfo = styled.div`
-  color: #64B5F6;
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   
   @media (max-width: 768px) {
@@ -76,9 +63,22 @@ const TimeInfo = styled.div`
   }
 `;
 
+const TimeInfo = styled.div`
+  color: #64B5F6;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
 const FormContainer = styled.div`
   background: rgba(255, 255, 255, 0.95);
-  padding: 40px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
@@ -88,11 +88,11 @@ const FormContainer = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  padding: 15px 20px;
-  font-size: 1.2rem;
+  padding: 10px 15px;
+  font-size: 1rem;
   border: 2px solid #ddd;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
   
