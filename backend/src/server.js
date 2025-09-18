@@ -567,7 +567,7 @@ app.get('/api/admin/stats', authenticateAdminHeader, async (req, res) => {
 });
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
