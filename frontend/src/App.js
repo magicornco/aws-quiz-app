@@ -28,9 +28,6 @@ const GlobalStyle = createGlobalStyle`
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  transform: scale(0.8);
-  transform-origin: top left;
-  width: 125%; /* Compensate for scale */
 `;
 
 const ErrorMessage = styled.div`
@@ -81,6 +78,9 @@ function App() {
   };
 
   useEffect(() => {
+    // Set zoom to 80% on page load
+    document.body.style.zoom = '0.8';
+    
     // Check API health on app start
     checkAPIHealth();
     // Load leaderboard on app start
