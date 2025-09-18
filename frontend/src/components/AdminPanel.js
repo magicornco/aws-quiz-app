@@ -505,10 +505,12 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to clear all questions?')) return;
     
     try {
-      const response = await fetch('http://localhost:5001/api/admin/questions/clear', {
+      const response = await fetch(`${getApiUrl()}/admin/questions/clear`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
       });
 
       if (response.ok) {
@@ -525,10 +527,12 @@ const AdminPanel = () => {
 
   const syncQuestions = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/admin/questions/sync', {
+      const response = await fetch(`${getApiUrl()}/admin/questions/sync`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
       });
 
       if (response.ok) {
@@ -548,10 +552,13 @@ const AdminPanel = () => {
     try {
       const questionsData = JSON.parse(jsonData);
       
-      const response = await fetch('http://localhost:5001/api/admin/questions/load-json', {
+      const response = await fetch(`${getApiUrl()}/admin/questions/load-json`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, questions: questionsData }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        },
+        body: JSON.stringify({ questions: questionsData }),
       });
 
       if (response.ok) {
@@ -570,10 +577,13 @@ const AdminPanel = () => {
 
   const toggleQuestion = async (questionId, currentActive) => {
     try {
-      const response = await fetch(`http://localhost:5001/api/admin/questions/${questionId}`, {
+      const response = await fetch(`${getApiUrl()}/admin/questions/${questionId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, active: !currentActive }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        },
+        body: JSON.stringify({ active: !currentActive }),
       });
 
       if (response.ok) {
@@ -592,10 +602,12 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to clear the leaderboard?')) return;
     
     try {
-      const response = await fetch('http://localhost:5001/api/admin/leaderboard/clear', {
+      const response = await fetch(`${getApiUrl()}/admin/leaderboard/clear`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
       });
 
       if (response.ok) {
@@ -614,10 +626,12 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to clear all game sessions? This will reset the "Questions Answered" and "Total Game Sessions" statistics.')) return;
     
     try {
-      const response = await fetch('http://localhost:5001/api/admin/game-sessions/clear', {
+      const response = await fetch(`${getApiUrl()}/admin/game-sessions/clear`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
       });
 
       if (response.ok) {
@@ -636,10 +650,12 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to delete this question?')) return;
     
     try {
-      const response = await fetch(`http://localhost:5001/api/admin/questions/${questionId}`, {
+      const response = await fetch(`${getApiUrl()}/admin/questions/${questionId}`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
       });
 
       if (response.ok) {
@@ -658,10 +674,12 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     
     try {
-      const response = await fetch(`http://localhost:5001/api/admin/users/${userId}`, {
+      const response = await fetch(`${getApiUrl()}/admin/users/${userId}`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
       });
 
       if (response.ok) {
@@ -685,10 +703,13 @@ const AdminPanel = () => {
     }
     
     try {
-      const response = await fetch('http://localhost:5001/api/admin/questions/add', {
+      const response = await fetch(`${getApiUrl()}/admin/questions/add`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, ...newQuestion }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        },
+        body: JSON.stringify(newQuestion),
       });
 
       if (response.ok) {
@@ -714,10 +735,13 @@ const AdminPanel = () => {
     }
     
     try {
-      const response = await fetch(`http://localhost:5001/api/admin/questions/${editingQuestion.id}/update`, {
+      const response = await fetch(`${getApiUrl()}/admin/questions/${editingQuestion.id}/update`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, ...editingQuestion }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        },
+        body: JSON.stringify(editingQuestion),
       });
 
       if (response.ok) {
