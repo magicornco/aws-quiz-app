@@ -326,26 +326,26 @@ const PartnerLogo = styled.div`
 `;
 
 const PartnerLogoImage = styled.img`
-  height: 180px;
-  width: 180px;
+  height: 150px;
+  width: 150px;
   object-fit: contain;
   transition: all 0.3s ease;
   margin-bottom: 8px;
   background: transparent;
   
   @media (max-width: 1200px) {
-    height: 160px;
-    width: 160px;
+    height: 140px;
+    width: 140px;
   }
   
   @media (max-width: 768px) {
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
   }
   
   @media (max-width: 480px) {
-    height: 130px;
-    width: 130px;
+    height: 100px;
+    width: 100px;
   }
   
   &:hover {
