@@ -15,6 +15,9 @@ app.use(cors({
     'http://localhost:3001', 
     'http://127.0.0.1:3000', 
     'http://127.0.0.1:3001',
+    'http://aws-quiz-backend:5000',
+    'http://aws-quiz-backend:5001',
+    'http://aws-quiz-frontend:3000',
     /^http:\/\/.*\.amazonaws\.com/,
     /^http:\/\/.*\.compute-1\.amazonaws\.com/,
     /^http:\/\/ec2-.*\.amazonaws\.com/,
@@ -576,7 +579,7 @@ app.get('/api/admin/stats', authenticateAdminHeader, async (req, res) => {
 });
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
