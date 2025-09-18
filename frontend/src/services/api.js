@@ -5,8 +5,12 @@ const API_BASE_URL = process.env.REACT_APP_API_URL ||
     ? 'http://localhost:5001/api' 
     : `http://${window.location.hostname}:5001/api`);
 
-console.log('API_BASE_URL:', API_BASE_URL);
+console.log('=== API Configuration Debug ===');
+console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
 console.log('Current hostname:', window.location.hostname);
+console.log('Current location:', window.location.href);
+console.log('Final API_BASE_URL:', API_BASE_URL);
+console.log('================================');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -87,6 +91,7 @@ export const gameAPI = {
       const response = await api.get('/health');
       return response.data;
     } catch (error) {
+      console.error('Health check error:', error);
       throw new Error(error.response?.data?.error || 'Health check failed');
     }
   },
