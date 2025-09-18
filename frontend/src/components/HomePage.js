@@ -43,6 +43,21 @@ const Logo = styled.img`
   height: 300px;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  
+  @media (max-width: 1366px) {
+    width: 250px;
+    height: 250px;
+  }
+  
+  @media (max-width: 1024px) {
+    width: 200px;
+    height: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 180px;
+    height: 180px;
+  }
 `;
 
 const Title = styled.h1`
@@ -52,6 +67,14 @@ const Title = styled.h1`
   text-align: center;
   margin-bottom: 5px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  
+  @media (max-width: 1366px) {
+    font-size: 2.2rem;
+  }
+  
+  @media (max-width: 1024px) {
+    font-size: 2rem;
+  }
   
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -64,6 +87,14 @@ const Subtitle = styled.h2`
   text-align: center;
   margin-bottom: 5px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  
+  @media (max-width: 1366px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+  }
   
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -78,8 +109,16 @@ const TimeInfo = styled.div`
   margin-bottom: 10px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   
-  @media (max-width: 768px) {
+  @media (max-width: 1366px) {
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 1024px) {
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
   }
 `;
 
@@ -91,6 +130,21 @@ const FormContainer = styled.div`
   backdrop-filter: blur(10px);
   max-width: 500px;
   width: 100%;
+  
+  @media (max-width: 1366px) {
+    max-width: 450px;
+    padding: 18px;
+  }
+  
+  @media (max-width: 1024px) {
+    max-width: 400px;
+    padding: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 350px;
+    padding: 12px;
+  }
 `;
 
 const Input = styled.input`
@@ -102,6 +156,21 @@ const Input = styled.input`
   margin-bottom: 10px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
+  
+  @media (max-width: 1366px) {
+    padding: 9px 13px;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 1024px) {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 7px 10px;
+    font-size: 0.85rem;
+  }
   
   &:focus {
     outline: none;

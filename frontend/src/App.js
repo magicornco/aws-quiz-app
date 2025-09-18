@@ -39,9 +39,21 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  @media (max-width: 1366px) {
+    body {
+      font-size: 11px;
+    }
+  }
+
   @media (max-width: 1024px) {
     body {
       font-size: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 9px;
     }
   }
 `;
