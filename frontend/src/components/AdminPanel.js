@@ -435,12 +435,19 @@ const AdminPanel = () => {
     setTimeout(() => setMessage(''), 5000);
   };
 
+  const getApiUrl = () => {
+    return process.env.REACT_APP_API_URL || 
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://localhost:5001/api' 
+        : `http://${window.location.hostname}:5001/api`);
+  };
+
   const login = async (e) => {
     e.preventDefault();
     setLoading(true);
     
     try {
-      const response = await fetch('http://localhost:5001/api/admin/login', {
+      const response = await fetch(`${getApiUrl()}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -466,13 +473,13 @@ const AdminPanel = () => {
       const authHeader = btoa(`${username}:${password}`);
       
       const [statsRes, questionsRes, usersRes] = await Promise.all([
-        fetch('http://localhost:5001/api/admin/stats', {
+        fetch(`${getApiUrl()}/admin/stats`, {
           headers: { 'Authorization': `Basic ${authHeader}` },
         }),
-        fetch('http://localhost:5001/api/admin/questions', {
+        fetch(`${getApiUrl()}/admin/questions`, {
           headers: { 'Authorization': `Basic ${authHeader}` },
         }),
-        fetch('http://localhost:5001/api/admin/users', {
+        fetch(`${getApiUrl()}/admin/users`, {
           headers: { 'Authorization': `Basic ${authHeader}` },
         })
       ]);
