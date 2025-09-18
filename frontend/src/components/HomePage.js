@@ -14,11 +14,18 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 10px;
-  padding-top: 10px;
   font-family: 'Arial', sans-serif;
   position: relative;
+`;
+
+const MiddleSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 `;
 
 const LogoContainer = styled.div`
@@ -32,8 +39,8 @@ const LogoContainer = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 `;
@@ -260,8 +267,9 @@ const EmptyLeaderboard = styled.div`
 
 
 const PartnerLogos = styled.div`
-  margin-top: 5px;
-  padding: 20px 0;
+  margin-top: auto;
+  padding: 60px 0 70px 0;
+  width: 100%;
 `;
 
 const LogosRow = styled.div`
@@ -331,13 +339,13 @@ const PartnerLogoImage = styled.img`
   }
   
   @media (max-width: 768px) {
-    height: 180px;
-    width: 180px;
+    height: 200px;
+    width: 200px;
   }
   
   @media (max-width: 480px) {
-    height: 150px;
-    width: 150px;
+    height: 180px;
+    width: 180px;
   }
   
   &:hover {
@@ -405,40 +413,42 @@ function HomePage({ onStartGame, leaderboard = [] }) {
         </LeaderboardList>
       </LeaderboardContainer>
 
-      <LogoContainer>
-        <Logo src={magicornLogo} alt="Magicorn Logo" />
-      </LogoContainer>
-      
-      <Title>AWS Quiz Challenge</Title>
-      <Subtitle>Test Your AWS Knowledge!</Subtitle>
-      <TimeInfo>⏱️ 1 minute to answer 5 questions</TimeInfo>
-      
-      <FormContainer>
-        <form onSubmit={handleSubmit}>
-          <InputContainer>
-            <Input
-              type="text"
-              placeholder="Enter your name..."
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              maxLength={30}
-              required
-            />
-          </InputContainer>
-          <InputContainer>
-            <Input
-              type="text"
-              placeholder="Company name (optional)..."
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              maxLength={30}
-            />
-          </InputContainer>
-          <Button type="submit" disabled={!playerName.trim()}>
-            Start Quiz
-          </Button>
-        </form>
-      </FormContainer>
+      <MiddleSection>
+        <LogoContainer>
+          <Logo src={magicornLogo} alt="Magicorn Logo" />
+        </LogoContainer>
+        
+        <Title>AWS Quiz Challenge</Title>
+        <Subtitle>Test Your AWS Knowledge!</Subtitle>
+        <TimeInfo>⏱️ 1 minute to answer 5 questions</TimeInfo>
+        
+        <FormContainer>
+          <form onSubmit={handleSubmit}>
+            <InputContainer>
+              <Input
+                type="text"
+                placeholder="Enter your name..."
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                maxLength={30}
+                required
+              />
+            </InputContainer>
+            <InputContainer>
+              <Input
+                type="text"
+                placeholder="Company name (optional)..."
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                maxLength={30}
+              />
+            </InputContainer>
+            <Button type="submit" disabled={!playerName.trim()}>
+              Start Quiz
+            </Button>
+          </form>
+        </FormContainer>
+      </MiddleSection>
       
       <PartnerLogos>
         <LogosRow>
