@@ -104,7 +104,7 @@ app.post('/api/admin/load-questions', authenticateAdmin, async (req, res) => {
 });
 
 // Clear all questions
-app.delete('/api/admin/questions/clear', authenticateAdmin, async (req, res) => {
+app.delete('/api/admin/questions/clear', authenticateAdminHeader, async (req, res) => {
   try {
     await database.clearAllQuestions();
     res.json({ success: true, message: 'All questions cleared' });
@@ -143,7 +143,7 @@ app.post('/api/admin/questions/sync', authenticateAdmin, async (req, res) => {
 });
 
 // Clear leaderboard
-app.delete('/api/admin/leaderboard/clear', authenticateAdmin, async (req, res) => {
+app.delete('/api/admin/leaderboard/clear', authenticateAdminHeader, async (req, res) => {
   try {
     await database.clearLeaderboard();
     res.json({ success: true, message: 'Leaderboard cleared' });
@@ -154,7 +154,7 @@ app.delete('/api/admin/leaderboard/clear', authenticateAdmin, async (req, res) =
 });
 
 // Delete specific question
-app.delete('/api/admin/questions/:id', authenticateAdmin, async (req, res) => {
+app.delete('/api/admin/questions/:id', authenticateAdminHeader, async (req, res) => {
   try {
     const { id } = req.params;
     await database.deleteQuestion(id);
@@ -202,7 +202,7 @@ app.put('/api/admin/questions/:id/update', authenticateAdmin, async (req, res) =
 });
 
 // Delete user
-app.delete('/api/admin/users/:id', authenticateAdmin, async (req, res) => {
+app.delete('/api/admin/users/:id', authenticateAdminHeader, async (req, res) => {
   try {
     const { id } = req.params;
     await database.deleteUser(id);
@@ -214,7 +214,7 @@ app.delete('/api/admin/users/:id', authenticateAdmin, async (req, res) => {
 });
 
 // Clear game sessions
-app.delete('/api/admin/game-sessions/clear', authenticateAdmin, async (req, res) => {
+app.delete('/api/admin/game-sessions/clear', authenticateAdminHeader, async (req, res) => {
   try {
     await database.clearGameSessions();
     res.json({ success: true, message: 'Game sessions cleared' });
