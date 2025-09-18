@@ -318,33 +318,29 @@ const PartnerLogo = styled.div`
 `;
 
 const PartnerLogoImage = styled.img`
-  height: 180px;
-  width: 180px;
+  height: 220px;
+  width: 220px;
   object-fit: contain;
-  opacity: 0.8;
   transition: all 0.3s ease;
   margin-bottom: 8px;
-  filter: brightness(1) invert(1);
-  mix-blend-mode: screen;
   background: transparent;
   
   @media (max-width: 1200px) {
-    height: 170px;
-    width: 170px;
+    height: 200px;
+    width: 200px;
   }
   
   @media (max-width: 768px) {
-    height: 160px;
-    width: 160px;
+    height: 180px;
+    width: 180px;
   }
   
   @media (max-width: 480px) {
-    height: 210px;
-    width: 210px;
+    height: 150px;
+    width: 150px;
   }
   
   &:hover {
-    opacity: 1;
     transform: scale(1.1);
   }
 `;
