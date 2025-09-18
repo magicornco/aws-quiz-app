@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "What is the most popular virtual server service in Amazon Web Services?",
+    "options": ["EC2", "S3", "Lambda", "RDS"],
+    "answer": "EC2"
+  },
+  {
+    "id": 2,
+    "question": "Which AWS service is used for object-based file storage?",
+    "options": ["EC2", "S3", "Lambda", "DynamoDB"],
+    "answer": "S3"
+  },
+  {
+    "id": 3,
+    "question": "What is the best IAM (Identity and Access Management) entity for providing temporary access to AWS resources?",
+    "options": ["User", "Group", "Role", "Policy"],
+    "answer": "Role"
+  },
+  {
+    "id": 4,
+    "question": "Which component acts as a virtual firewall for your EC2 instance?",
+    "options": ["Network ACL (NACL)", "Security Group", "Internet Gateway", "VPC"],
+    "answer": "Security Group"
+  },
+  {
+    "id": 5,
+    "question": "Which service is used to visualize, understand, and manage your AWS costs?",
+    "options": ["AWS Budgets", "AWS Cost Explorer", "AWS Trusted Advisor", "Amazon CloudWatch"],
+    "answer": "AWS Cost Explorer"
+  },
+  {
+    "id": 6,
+    "question": "Which service is a fully managed NoSQL database?",
+    "options": ["RDS", "Redshift", "DynamoDB", "Aurora"],
+    "answer": "DynamoDB"
+  },
+  {
+    "id": 7,
+    "question": "What are the isolated data center locations within a Region called that provide redundancy?",
+    "options": ["Edge Locations", "Availability Zones", "Local Zones", "Regions"],
+    "answer": "Availability Zones"
+  },
+  {
+    "id": 8,
+    "question": "Which service is ideal for running code without provisioning or managing servers?",
+    "options": ["EC2", "Lambda", "Elastic Beanstalk", "Lightsail"],
+    "answer": "Lambda"
+  },
+  {
+    "id": 9,
+    "question": "Which service is a global content delivery network (CDN) that delivers content to end-users with low latency?",
+    "options": ["Route 53", "Direct Connect", "CloudFront", "VPC"],
+    "answer": "CloudFront"
+  },
+  {
+    "id": 10,
+    "question": "Which service allows you to create and manage infrastructure as code?",
+    "options": ["CloudFormation", "Elastic Beanstalk", "Systems Manager", "OpsWorks"],
+    "answer": "CloudFormation"
+  },
+  {
+    "id": 11,
+    "question": "Which service enables a company to manage and consolidate billing for all its AWS accounts from a central location?",
+    "options": ["AWS Control Tower", "AWS Organizations", "AWS IAM", "AWS Resource Access Manager"],
+    "answer": "AWS Organizations"
+  },
+  {
+    "id": 12,
+    "question": "Which service makes it easy to set up, operate, and scale a relational database like MySQL, PostgreSQL, or Microsoft SQL Server?",
+    "options": ["DynamoDB", "Redshift", "ElastiCache", "RDS (Relational Database Service)"],
+    "answer": "RDS (Relational Database Service)"
+  },
+  {
+    "id": 13,
+    "question": "Which stateless security layer controls inbound and outbound traffic at the subnet level?",
+    "options": ["Security Group", "Network ACL (NACL)", "Internet Gateway", "NAT Gateway"],
+    "answer": "Network ACL (NACL)"
+  },
+  {
+    "id": 14,
+    "question": "Which service provides recommendations on cost optimization, performance, and security to help you follow AWS best practices?",
+    "options": ["AWS Inspector", "AWS Shield", "AWS Trusted Advisor", "AWS Config"],
+    "answer": "AWS Trusted Advisor"
+  },
+  {
+    "id": 15,
+    "question": "Which service collects and tracks metrics to monitor your AWS resources and applications?",
+    "options": ["CloudTrail", "CloudWatch", "AWS Config", "Systems Manager"],
+    "answer": "CloudWatch"
+  },
+  {
+    "id": 16,
+    "question": "What is the physical device service used to transfer petabyte-scale data to AWS?",
+    "options": ["AWS DataSync", "AWS Snowball", "AWS Storage Gateway", "AWS Transfer Family"],
+    "answer": "AWS Snowball"
+  },
+  {
+    "id": 17,
+    "question": "What is the highly available and scalable DNS (Domain Name System) web service that translates domain names to IP addresses?",
+    "options": ["CloudFront", "VPC", "Route 53", "Direct Connect"],
+    "answer": "Route 53"
+  },
+  {
+    "id": 18,
+    "question": "Which service records API calls in your AWS account and delivers log files for auditing?",
+    "options": ["CloudWatch", "CloudTrail", "VPC Flow Logs", "AWS Config"],
+    "answer": "CloudTrail"
+  },
+  {
+    "id": 19,
+    "question": "What is the PaaS (Platform as a Service) offering that lets you upload code without worrying about the underlying infrastructure required to deploy a web application?",
+    "options": ["EC2", "Lambda", "Elastic Beanstalk", "CloudFormation"],
+    "answer": "Elastic Beanstalk"
+  },
+  {
+    "id": 20,
+    "question": "What is the fully managed message queuing service used for storing messages between application components?",
+    "options": ["SNS (Simple Notification Service)", "SQS (Simple Queue Service)", "Amazon MQ", "Kinesis"],
+    "answer": "SQS (Simple Queue Service)"
+  },
+  {
+    "id": 21,
+    "question": "Which service is used to establish a dedicated private network connection between the AWS Cloud and your on-premises data center?",
+    "options": ["VPN", "Direct Connect", "VPC Peering", "Transit Gateway"],
+    "answer": "Direct Connect"
+  },
+  {
+    "id": 22,
+    "question": "What is the interactive query service that allows you to analyze data directly in S3 using standard SQL?",
+    "options": ["Redshift", "Athena", "EMR", "Glue"],
+    "answer": "Athena"
+  },
+  {
+    "id": 23,
+    "question": "Which service provides persistent block storage volumes for EC2 instances?",
+    "options": ["S3", "EFS", "EBS (Elastic Block Store)", "Instance Store"],
+    "answer": "EBS (Elastic Block Store)"
+  },
+  {
+    "id": 24,
+    "question": "Which managed service provides protection against Distributed Denial of Service (DDoS) attacks?",
+    "options": ["AWS WAF", "AWS Shield", "Amazon Inspector", "AWS GuardDuty"],
+    "answer": "AWS Shield"
+  },
+  {
+    "id": 25,
+    "question": "The principle of 'Least Privilege' is most associated with which AWS service?",
+    "options": ["EC2", "S3", "IAM (Identity and Access Management)", "VPC"],
+    "answer": "IAM (Identity and Access Management)"
+  },
+  {
+    "id": 26,
+    "question": "Which S3 storage class is designed for long-term archiving of data that is rarely accessed but needs to be retrieved quickly when needed?",
+    "options": ["S3 Standard", "S3 Intelligent-Tiering", "S3 Glacier Instant Retrieval", "S3 Glacier Deep Archive"],
+    "answer": "S3 Glacier Deep Archive"
+  },
+  {
+    "id": 27,
+    "question": "Which service allows you to assess, audit, and evaluate the configurations of your AWS resources?",
+    "options": ["AWS Config", "CloudFormation", "CloudTrail", "Trusted Advisor"],
+    "answer": "AWS Config"
+  },
+  {
+    "id": 28,
+    "question": "Which service should a company use to automatically add and remove EC2 instances based on demand fluctuations?",
+    "options": ["Elastic Load Balancing", "AWS Auto Scaling", "Amazon CloudWatch Alarms", "AWS Lambda"],
+    "answer": "AWS Auto Scaling"
+  },
+  {
+    "id": 29,
+    "question": "Which service automatically distributes incoming application traffic across multiple targets, such as EC2 instances?",
+    "options": ["Route 53", "Elastic Load Balancing (ELB)", "Auto Scaling", "CloudFront"],
+    "answer": "Elastic Load Balancing (ELB)"
+  },
+  {
+    "id": 30,
+    "question": "What is the web application firewall that helps protect your web applications from common web exploits like SQL injection?",
+    "options": ["AWS Shield", "Network ACL", "Security Group", "AWS WAF"],
+    "answer": "AWS WAF"
+  },
+  {
+    "id": 31,
+    "question": "According to the AWS Shared Responsibility Model, which of the following is the customer's responsibility?",
+    "options": ["Maintenance of physical hardware", "Management of the network infrastructure", "Encryption of user data", "Security of Availability Zones"],
+    "answer": "Encryption of user data"
+  },
+  {
+    "id": 32,
+    "question": "Which Redis or Memcached-compatible service is used as an in-memory data store or cache?",
+    "options": ["RDS", "DynamoDB", "ElastiCache", "Redshift"],
+    "answer": "ElastiCache"
+  },
+  {
+    "id": 33,
+    "question": "An application developer wants to add push notification functionality to their application. Which service should they use?",
+    "options": ["SQS", "SES", "SNS", "Amazon MQ"],
+    "answer": "SNS"
+  },
+  {
+    "id": 34,
+    "question": "Which component is used to allow EC2 instances in a private subnet to access the internet while preventing inbound connections from the internet?",
+    "options": ["Internet Gateway", "NAT Gateway", "Virtual Private Gateway", "Egress-Only Internet Gateway"],
+    "answer": "NAT Gateway"
+  },
+  {
+    "id": 35,
+    "question": "Which storage service is most suitable when a shared file system is needed for multiple Linux-based EC2 instances?",
+    "options": ["EBS", "S3", "EFS (Elastic File System)", "Instance Store"],
+    "answer": "EFS (Elastic File System)"
+  },
+  {
+    "id": 36,
+    "question": "What is the most cost-effective EC2 purchasing option for non-urgent, interruptible workloads where cost is critical?",
+    "options": ["On-Demand Instances", "Reserved Instances", "Spot Instances", "Dedicated Hosts"],
+    "answer": "Spot Instances"
+  },
+  {
+    "id": 37,
+    "question": "Which pillar of the AWS Well-Architected Framework focuses on a system's ability to recover from failures and dynamically meet demand?",
+    "options": ["Operational Excellence", "Security", "Reliability", "Cost Optimization"],
+    "answer": "Reliability"
+  },
+  {
+    "id": 38,
+    "question": "What is the hybrid cloud storage service that enables on-premises applications to seamlessly access AWS storage services?",
+    "options": ["AWS Snowball", "AWS DataSync", "AWS Storage Gateway", "AWS Direct Connect"],
+    "answer": "AWS Storage Gateway"
+  },
+  {
+    "id": 39,
+    "question": "Which fully managed, petabyte-scale service is designed for data warehousing solutions?",
+    "options": ["RDS", "DynamoDB", "Amazon Redshift", "Amazon EMR"],
+    "answer": "Amazon Redshift"
+  },
+  {
+    "id": 40,
+    "question": "Which feature should be enabled to ensure high availability for an RDS database?",
+    "options": ["Read Replicas", "Multi-AZ Deployment", "Snapshots", "Performance Insights"],
+    "answer": "Multi-AZ Deployment"
+  },
+  {
+    "id": 41,
+    "question": "By which concept has AWS geographically separated its global infrastructure?",
+    "options": ["Availability Zones", "Regions", "Edge Locations", "Data Centers"],
+    "answer": "Regions"
+  },
+  {
+    "id": 42,
+    "question": "What is the network connection that allows two different VPCs to communicate with each other privately?",
+    "options": ["VPC Peering", "Direct Connect", "VPN Connection", "Transit Gateway"],
+    "answer": "VPC Peering"
+  },
+  {
+    "id": 43,
+    "question": "Which service is used to provide a static public IPv4 address assigned to an EC2 instance that does not change when the instance is stopped and restarted?",
+    "options": ["Public IP", "Elastic IP", "Private IP", "ENI (Elastic Network Interface)"],
+    "answer": "Elastic IP"
+  },
+  {
+    "id": 44,
+    "question": "Which feature is used to create read-only copies of an RDS database to reduce the read load and improve performance?",
+    "options": ["Multi-AZ", "Read Replicas", "Snapshots", "Cloning"],
+    "answer": "Read Replicas"
+  },
+  {
+    "id": 45,
+    "question": "Which service automatically assesses your AWS infrastructure for potential security vulnerabilities and deviations from best practices?",
+    "options": ["Amazon GuardDuty", "Amazon Inspector", "AWS Shield", "AWS WAF"],
+    "answer": "Amazon Inspector"
+  },
+  {
+    "id": 46,
+    "question": "Through which service does AWS offer customers the ability to create their own virtually isolated private networks?",
+    "options": ["Amazon S3", "Amazon EC2", "Amazon VPC (Virtual Private Cloud)", "Amazon Route 53"],
+    "answer": "Amazon VPC (Virtual Private Cloud)"
+  },
+  {
+    "id": 47,
+    "question": "Which feature should you enable to prevent accidental deletion or overwriting of objects in your S3 bucket?",
+    "options": ["Encryption", "Versioning", "Access Control Lists (ACLs)", "Lifecycle Policies"],
+    "answer": "Versioning"
+  },
+  {
+    "id": 48,
+    "question": "What is the threat detection service that continuously monitors for malicious activity and unauthorized behavior in your AWS accounts?",
+    "options": ["Amazon Inspector", "AWS Shield", "Amazon GuardDuty", "AWS Security Hub"],
+    "answer": "Amazon GuardDuty"
+  },
+  {
+    "id": 49,
+    "question": "Which service is used to move large amounts of data online from on-premises servers to AWS quickly and reliably?",
+    "options": ["AWS Snowball", "AWS DataSync", "S3 Transfer Acceleration", "AWS Transfer Family"],
+    "answer": "AWS DataSync"
+  },
+  {
+    "id": 50,
+    "question": "What is the purchasing model that provides a significant discount on EC2 in exchange for a one or three-year commitment of a fixed usage amount?",
+    "options": ["Spot Instances", "On-Demand Instances", "Reserved Instances", "Savings Plans"],
+    "answer": "Reserved Instances"
+  }
+]
