@@ -87,7 +87,7 @@ services:
     container_name: aws-quiz-frontend-1
     restart: unless-stopped
     environment:
-      - REACT_APP_API_URL=http://aws-quiz-nginx/api
+      - REACT_APP_API_URL=/api
     depends_on:
       - backend-1
       - backend-2
@@ -102,7 +102,7 @@ services:
     container_name: aws-quiz-frontend-2
     restart: unless-stopped
     environment:
-      - REACT_APP_API_URL=http://aws-quiz-nginx/api
+      - REACT_APP_API_URL=/api
     depends_on:
       - backend-1
       - backend-2
@@ -117,7 +117,7 @@ services:
     container_name: aws-quiz-frontend-3
     restart: unless-stopped
     environment:
-      - REACT_APP_API_URL=http://aws-quiz-nginx/api
+      - REACT_APP_API_URL=/api
     depends_on:
       - backend-1
       - backend-2
