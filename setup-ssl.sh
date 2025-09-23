@@ -1,14 +1,14 @@
+#!/bin/bash
+
+echo "🔒 Setting up Let's Encrypt SSL for quiz.magicorn.org..."
+
+# Create temporary nginx config for initial certificate request
+cat > nginx/nginx-temp.conf << 'EOF'
 events {
     worker_connections 1024;
 }
 
 http {
-    # Security headers
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Referrer-Policy "no-referrer-when-downgrade" always;
-    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
     upstream backend {
         server aws-quiz-backend-1:5000;
         server aws-quiz-backend-2:5000;
@@ -24,30 +24,11 @@ http {
     server {
         listen 80;
         server_name quiz.magicorn.org;
-        
+
         # Let's Encrypt challenge
         location /.well-known/acme-challenge/ {
             root /var/www/certbot;
         }
-        
-        # Redirect HTTP to HTTPS
-        location / {
-            return 301 https://$host$request_uri;
-        }
-    }
-    
-    server {
-        listen 443 ssl http2;
-        server_name quiz.magicorn.org;
-        
-        # SSL Configuration
-        ssl_certificate /etc/letsencrypt/live/quiz.magicorn.org/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/quiz.magicorn.org/privkey.pem;
-        ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384;
-        ssl_prefer_server_ciphers off;
-        ssl_session_cache shared:SSL:10m;
-        ssl_session_timeout 10m;
 
         # Frontend routing
         location / {
@@ -82,3 +63,26 @@ http {
         }
     }
 }
+EOF
+
+echo "📦 Starting containers with temporary config..."
+docker compose down
+cp nginx/nginx-temp.conf nginx/nginx.conf
+docker compose up -d
+
+echo "⏳ Waiting for containers to start..."
+sleep 30
+
+echo "🔐 Requesting SSL certificate..."
+docker compose run --rm certbot
+
+echo "🔄 Updating nginx config with SSL..."
+cp nginx/nginx.conf nginx/nginx-ssl.conf
+docker compose down
+docker compose up -d
+
+echo "✅ SSL setup complete!"
+echo "🌐 Your site is now available at: https://quiz.magicorn.org"
+
+# Cleanup
+rm nginx/nginx-temp.conf

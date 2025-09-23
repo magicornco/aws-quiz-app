@@ -6,8 +6,11 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - certbot_certs:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
     depends_on:
       - backend-1
       - backend-2
@@ -17,6 +20,15 @@ services:
       - frontend-3
     networks:
       - aws-quiz-network
+
+  # Certbot for SSL certificates
+  certbot:
+    image: certbot/certbot
+    container_name: aws-quiz-certbot
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email admin@magicorn.org --agree-tos --no-eff-email -d quiz.magicorn.org
 
   # Backend Replicas
   backend-1:
@@ -124,6 +136,10 @@ services:
       - backend-3
     networks:
       - aws-quiz-network
+
+volumes:
+  certbot_certs:
+  certbot_www:
 
 networks:
   aws-quiz-network:
