@@ -188,7 +188,12 @@ const Feedback = styled.div`
 `;
 
 function QuizPage({ gameData, onAnswer, onTimeUp }) {
-  // Add null check for gameData and currentQuestion before hooks
+  // Initialize hooks first, before any early returns
+  const [timeLeft, setTimeLeft] = useState(gameData?.timeLimit ? gameData.timeLimit / 1000 : 60);
+  const [currentAnswer, setCurrentAnswer] = useState('');
+  const [feedback, setFeedback] = useState(null);
+
+  // Add null check for gameData and currentQuestion after hooks
   if (!gameData || !gameData.currentQuestion) {
     return (
       <Container>
@@ -198,10 +203,6 @@ function QuizPage({ gameData, onAnswer, onTimeUp }) {
       </Container>
     );
   }
-
-  const [timeLeft, setTimeLeft] = useState(gameData.timeLimit / 1000);
-  const [currentAnswer, setCurrentAnswer] = useState('');
-  const [feedback, setFeedback] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {

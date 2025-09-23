@@ -48,12 +48,12 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
-const Logo = styled.img`
-  height: 60px;
-  width: auto;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-`;
+// const Logo = styled.img`
+//   height: 60px;
+//   width: auto;
+//   margin-bottom: 20px;
+//   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+// `;
 
 const AdminLogo = styled.img`
   height: 50px;

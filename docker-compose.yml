@@ -88,6 +88,8 @@ services:
     restart: unless-stopped
     environment:
       - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
     depends_on:
       - backend-1
       - backend-2
@@ -103,6 +105,8 @@ services:
     restart: unless-stopped
     environment:
       - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
     depends_on:
       - backend-1
       - backend-2
@@ -118,6 +122,8 @@ services:
     restart: unless-stopped
     environment:
       - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
     depends_on:
       - backend-1
       - backend-2
