@@ -90,6 +90,10 @@ services:
       - REACT_APP_API_URL=/api
       - DISABLE_ESLINT_PLUGIN=true
       - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+      - WDS_SOCKET_HOST=localhost
+      - WDS_SOCKET_PORT=3000
+      - WDS_SOCKET_PATH=/ws
     depends_on:
       - backend-1
       - backend-2
@@ -107,6 +111,10 @@ services:
       - REACT_APP_API_URL=/api
       - DISABLE_ESLINT_PLUGIN=true
       - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+      - WDS_SOCKET_HOST=localhost
+      - WDS_SOCKET_PORT=3000
+      - WDS_SOCKET_PATH=/ws
     depends_on:
       - backend-1
       - backend-2
@@ -124,6 +132,10 @@ services:
       - REACT_APP_API_URL=/api
       - DISABLE_ESLINT_PLUGIN=true
       - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+      - WDS_SOCKET_HOST=localhost
+      - WDS_SOCKET_PORT=3000
+      - WDS_SOCKET_PATH=/ws
     depends_on:
       - backend-1
       - backend-2
