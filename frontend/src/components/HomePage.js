@@ -21,9 +21,10 @@ const Container = styled.div`
   
   @media (max-width: 1024px) and (orientation: landscape) {
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    min-height: 100vh;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -40,8 +41,10 @@ const MiddleSection = styled.div`
   flex: 1;
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    flex: 0.6;
-    margin-right: 20px;
+    flex: 0.7;
+    margin-right: 15px;
+    justify-content: flex-start;
+    padding-top: 20px;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -72,8 +75,8 @@ const Logo = styled.img`
   }
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -100,8 +103,8 @@ const Title = styled.h1`
   }
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    font-size: 1.5rem;
-    margin-bottom: 3px;
+    font-size: 1.3rem;
+    margin-bottom: 2px;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -125,8 +128,8 @@ const Subtitle = styled.h2`
   }
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    font-size: 0.9rem;
-    margin-bottom: 3px;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -151,8 +154,8 @@ const TimeInfo = styled.div`
   }
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    font-size: 0.8rem;
-    margin-bottom: 5px;
+    font-size: 0.7rem;
+    margin-bottom: 3px;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -179,8 +182,8 @@ const FormContainer = styled.div`
   }
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    max-width: 300px;
-    padding: 12px;
+    max-width: 280px;
+    padding: 10px;
   }
   
   @media (max-width: 1024px) and (orientation: portrait) {
@@ -274,7 +277,14 @@ const LeaderboardContainer = styled.div`
   width: 100%;
   border: 2px solid rgba(255, 255, 255, 0.2);
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1024px) and (orientation: landscape) {
+    max-width: 280px;
+    padding: 15px;
+    top: 15px;
+    right: 15px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
     display: none;
   }
   
@@ -391,6 +401,11 @@ const PartnerLogos = styled.div`
   margin-top: auto;
   padding: 60px 0 70px 0;
   width: 100%;
+  
+  @media (max-width: 1024px) and (orientation: landscape) {
+    padding: 20px 0 30px 0;
+    margin-top: 10px;
+  }
 `;
 
 const LogosRow = styled.div`
@@ -401,6 +416,11 @@ const LogosRow = styled.div`
   flex-wrap: wrap;
   max-width: 1400px;
   margin: 0 auto;
+  
+  @media (max-width: 1024px) and (orientation: landscape) {
+    gap: 8px;
+    max-width: 100%;
+  }
   
   @media (max-width: 1200px) {
     gap: 12px;
@@ -425,6 +445,12 @@ const PartnerLogo = styled.div`
   transition: all 0.3s ease;
   width: 220px;
   height: 240px;
+  
+  @media (max-width: 1024px) and (orientation: landscape) {
+    width: 140px;
+    height: 160px;
+    padding: 3px;
+  }
   
   @media (max-width: 1200px) {
     width: 200px;
