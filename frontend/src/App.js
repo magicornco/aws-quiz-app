@@ -128,7 +128,7 @@ function App() {
   const checkAPIHealth = async () => {
     try {
       await gameAPI.healthCheck();
-      console.log('API is healthy');
+      // API is healthy - log removed
     } catch (error) {
       console.error('API health check failed:', error);
       setError('Backend API is not available. Please check if the server is running.');
@@ -183,8 +183,6 @@ function App() {
         setCurrentPage(GAME_STATES.RESULT);
       } else {
         // Update game data with next question
-        console.log('Response:', response);
-        console.log('Next question:', response.nextQuestion);
         setGameData(prev => ({
           ...prev,
           currentQuestionIndex: response.currentQuestionIndex !== undefined ? response.currentQuestionIndex : prev.currentQuestionIndex + 1,
