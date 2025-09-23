@@ -5,12 +5,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL ||
     ? 'http://localhost:5001/api' 
     : `http://${window.location.hostname}:5001/api`);
 
-console.log('=== API Configuration Debug ===');
-console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
-console.log('Current hostname:', window.location.hostname);
-console.log('Current location:', window.location.href);
-console.log('Final API_BASE_URL:', API_BASE_URL);
-console.log('================================');
+// Debug logs removed for production
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -23,7 +18,6 @@ const api = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    console.log(`Making ${config.method?.toUpperCase()} request to ${config.url}`);
     return config;
   },
   (error) => {
@@ -35,7 +29,6 @@ api.interceptors.request.use(
 // Response interceptor
 api.interceptors.response.use(
   (response) => {
-    console.log(`Response from ${response.config.url}:`, response.data);
     return response;
   },
   (error) => {

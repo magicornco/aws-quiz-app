@@ -555,7 +555,7 @@ const CollapsibleLeaderboard = styled.div`
   padding: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   z-index: 999;
-  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'};
+  transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(100%)'};
   transition: transform 0.3s ease;
   
   @media (max-width: 1024px) and (min-width: 769px) {
@@ -625,7 +625,7 @@ function HomePage({ onStartGame, leaderboard = [] }) {
         🏆 Leaderboard
       </LeaderboardToggle>
       
-      <CollapsibleLeaderboard isOpen={isLeaderboardOpen}>
+      <CollapsibleLeaderboard $isOpen={isLeaderboardOpen}>
         <LeaderboardTitle>🏆 Leaderboard</LeaderboardTitle>
         <LeaderboardSubtitle>Top AWS Quiz Champions</LeaderboardSubtitle>
         <LeaderboardList>
