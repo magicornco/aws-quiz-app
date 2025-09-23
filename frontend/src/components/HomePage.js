@@ -506,8 +506,12 @@ const LeaderboardToggle = styled.button`
     box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   }
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1024px) and (min-width: 769px) {
     display: block;
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -528,13 +532,12 @@ const CollapsibleLeaderboard = styled.div`
   transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'};
   transition: transform 0.3s ease;
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1024px) and (min-width: 769px) {
     display: block;
   }
   
   @media (max-width: 768px) {
-    width: 280px;
-    right: 10px;
+    display: none;
   }
 `;
 
