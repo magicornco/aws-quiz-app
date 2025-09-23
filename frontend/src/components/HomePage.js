@@ -18,6 +18,18 @@ const Container = styled.div`
   padding: 10px;
   font-family: 'Arial', sans-serif;
   position: relative;
+  
+  @media (max-width: 1024px) and (orientation: landscape) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    justify-content: flex-start;
+    padding: 20px;
+  }
 `;
 
 const MiddleSection = styled.div`
@@ -26,6 +38,16 @@ const MiddleSection = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
+  
+  @media (max-width: 1024px) and (orientation: landscape) {
+    flex: 0.6;
+    margin-right: 20px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    flex: 0.7;
+    margin-bottom: 20px;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -49,14 +71,19 @@ const Logo = styled.img`
     height: 250px;
   }
   
-  @media (max-width: 1024px) {
-    width: 200px;
-    height: 200px;
+  @media (max-width: 1024px) and (orientation: landscape) {
+    width: 150px;
+    height: 150px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    width: 180px;
+    height: 180px;
   }
   
   @media (max-width: 768px) {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 `;
 
@@ -72,12 +99,17 @@ const Title = styled.h1`
     font-size: 2.2rem;
   }
   
-  @media (max-width: 1024px) {
-    font-size: 2rem;
+  @media (max-width: 1024px) and (orientation: landscape) {
+    font-size: 1.5rem;
+    margin-bottom: 3px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    font-size: 1.8rem;
   }
   
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `;
 
@@ -92,12 +124,17 @@ const Subtitle = styled.h2`
     font-size: 1.2rem;
   }
   
-  @media (max-width: 1024px) {
-    font-size: 1.1rem;
+  @media (max-width: 1024px) and (orientation: landscape) {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    font-size: 1rem;
   }
   
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -113,12 +150,17 @@ const TimeInfo = styled.div`
     font-size: 0.95rem;
   }
   
-  @media (max-width: 1024px) {
-    font-size: 0.9rem;
+  @media (max-width: 1024px) and (orientation: landscape) {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    font-size: 0.85rem;
   }
   
   @media (max-width: 768px) {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -136,13 +178,18 @@ const FormContainer = styled.div`
     padding: 18px;
   }
   
-  @media (max-width: 1024px) {
-    max-width: 400px;
+  @media (max-width: 1024px) and (orientation: landscape) {
+    max-width: 300px;
+    padding: 12px;
+  }
+  
+  @media (max-width: 1024px) and (orientation: portrait) {
+    max-width: 350px;
     padding: 15px;
   }
   
   @media (max-width: 768px) {
-    max-width: 350px;
+    max-width: 320px;
     padding: 12px;
   }
 `;
@@ -227,12 +274,17 @@ const LeaderboardContainer = styled.div`
   width: 100%;
   border: 2px solid rgba(255, 255, 255, 0.2);
   
+  @media (max-width: 1024px) {
+    display: none;
+  }
+  
   @media (max-width: 768px) {
     position: relative;
     top: auto;
     right: auto;
     margin-top: 30px;
     max-width: 100%;
+    display: block;
   }
 `;
 
@@ -431,9 +483,65 @@ const LogoText = styled.span`
   line-height: 1.2;
 `;
 
+// Tablet için collapsible leaderboard butonu
+const LeaderboardToggle = styled.button`
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.95), rgba(247, 147, 30, 0.95));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+  
+  @media (max-width: 1024px) {
+    display: block;
+  }
+`;
+
+// Tablet için collapsible leaderboard container
+const CollapsibleLeaderboard = styled.div`
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 300px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.95), rgba(247, 147, 30, 0.95));
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 999;
+  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'};
+  transition: transform 0.3s ease;
+  
+  @media (max-width: 1024px) {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    width: 280px;
+    right: 10px;
+  }
+`;
+
 function HomePage({ onStartGame, leaderboard = [] }) {
   const [playerName, setPlayerName] = useState('');
   const [companyName, setCompanyName] = useState('');
+  const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -456,6 +564,7 @@ function HomePage({ onStartGame, leaderboard = [] }) {
 
   return (
     <Container>
+      {/* Desktop Leaderboard */}
       <LeaderboardContainer>
         <LeaderboardTitle>
           🏆 Leaderboard
@@ -481,6 +590,31 @@ function HomePage({ onStartGame, leaderboard = [] }) {
           )}
         </LeaderboardList>
       </LeaderboardContainer>
+
+      {/* Tablet Collapsible Leaderboard */}
+      <LeaderboardToggle onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}>
+        🏆 Leaderboard
+      </LeaderboardToggle>
+      
+      <CollapsibleLeaderboard isOpen={isLeaderboardOpen}>
+        <LeaderboardTitle>🏆 Leaderboard</LeaderboardTitle>
+        <LeaderboardSubtitle>Top AWS Quiz Champions</LeaderboardSubtitle>
+        <LeaderboardList>
+          {leaderboard.length === 0 ? (
+            <EmptyLeaderboard>No scores yet. Be the first!</EmptyLeaderboard>
+          ) : (
+            leaderboard.slice(0, 10).map((entry, index) => (
+              <LeaderboardItem key={index}>
+                <div>
+                  <RankIcon>{getRankIcon(index + 1)}</RankIcon>
+                  <PlayerName>{entry.playerName}</PlayerName>
+                </div>
+                <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
+              </LeaderboardItem>
+            ))
+          )}
+        </LeaderboardList>
+      </CollapsibleLeaderboard>
 
       <MiddleSection>
         <LogoContainer>
