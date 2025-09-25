@@ -382,6 +382,19 @@ const PlayerScore = styled.span`
   border: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
+const TimeScore = styled.span`
+  color: #FFD700;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  background: rgba(255, 215, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  margin-left: 4px;
+  display: inline-block;
+`;
+
 const RankIcon = styled.span`
   margin-right: 8px;
   font-size: 1rem;
@@ -613,7 +626,12 @@ function HomePage({ onStartGame, leaderboard = [] }) {
                   <RankIcon>{getRankIcon(index + 1)}</RankIcon>
                   <PlayerName>{entry.playerName}</PlayerName>
                 </div>
-                <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
+                <div>
+                  <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
+                  {entry.completionTime && (
+                    <TimeScore>{entry.completionTime}s</TimeScore>
+                  )}
+                </div>
               </LeaderboardItem>
             ))
           )}
@@ -638,7 +656,12 @@ function HomePage({ onStartGame, leaderboard = [] }) {
                   <RankIcon>{getRankIcon(index + 1)}</RankIcon>
                   <PlayerName>{entry.playerName}</PlayerName>
                 </div>
-                <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
+                <div>
+                  <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
+                  {entry.completionTime && (
+                    <TimeScore>{entry.completionTime}s</TimeScore>
+                  )}
+                </div>
               </LeaderboardItem>
             ))
           )}

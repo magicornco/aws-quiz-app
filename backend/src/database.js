@@ -140,6 +140,7 @@ class Database {
           playerName: entry.playerName,
           score: entry.score,
           totalQuestions: entry.totalQuestions,
+          completionTime: entry.completionTime, // Time taken in seconds
           completedAt: entry.completedAt,
           createdAt: new Date().toISOString()
         }
@@ -162,12 +163,15 @@ class Database {
       const result = await this.docClient.send(command);
       const items = result.Items || [];
       
-      // Sort by score (descending) and completedAt (ascending)
+      // Sort by score (descending), then by completion time (ascending - faster is better)
       items.sort((a, b) => {
         if (b.score !== a.score) {
           return b.score - a.score;
         }
-        return new Date(a.completedAt) - new Date(b.completedAt);
+        // If scores are equal, sort by completion time (lower time is better)
+        const timeA = a.completionTime || 60; // Default to 60 seconds if not set
+        const timeB = b.completionTime || 60;
+        return timeA - timeB;
       });
       
       return items.slice(0, limit);
@@ -530,6 +534,92 @@ class Database {
       console.log('Game sessions cleared successfully');
     } catch (error) {
       console.error('Error clearing game sessions:', error);
+      throw error;
+    }
+  }
+
+  // Search users in leaderboard
+  async searchUsers(query) {
+    try {
+      const command = new ScanCommand({
+        TableName: this.LEADERBOARD_TABLE,
+        FilterExpression: 'contains(playerName, :query)',
+        ExpressionAttributeValues: {
+          ':query': query
+        }
+      });
+      
+      const result = await this.docClient.send(command);
+      const items = result.Items || [];
+      
+      // Sort by score (descending), then by completion time (ascending)
+      items.sort((a, b) => {
+        if (b.score !== a.score) {
+          return b.score - a.score;
+        }
+        const timeA = a.completionTime || 60;
+        const timeB = b.completionTime || 60;
+        return timeA - timeB;
+      });
+      
+      return items;
+    } catch (error) {
+      console.error('Error searching users:', error);
+      throw error;
+    }
+  }
+
+  // Get user details with all quiz attempts
+  async getUserDetails(playerName) {
+    try {
+      // Get all leaderboard entries for this user
+      const leaderboardCommand = new ScanCommand({
+        TableName: this.LEADERBOARD_TABLE,
+        FilterExpression: 'playerName = :playerName',
+        ExpressionAttributeValues: {
+          ':playerName': playerName
+        }
+      });
+      
+      const leaderboardResult = await this.docClient.send(leaderboardCommand);
+      const leaderboardEntries = leaderboardResult.Items || [];
+      
+      // Get all game sessions for this user
+      const gameSessionsCommand = new ScanCommand({
+        TableName: this.GAME_SESSIONS_TABLE,
+        FilterExpression: 'playerName = :playerName',
+        ExpressionAttributeValues: {
+          ':playerName': playerName
+        }
+      });
+      
+      const gameSessionsResult = await this.docClient.send(gameSessionsCommand);
+      const gameSessions = gameSessionsResult.Items || [];
+      
+      // Calculate statistics
+      const totalAttempts = leaderboardEntries.length;
+      const bestScore = Math.max(...leaderboardEntries.map(entry => entry.score), 0);
+      const averageScore = totalAttempts > 0 ? 
+        leaderboardEntries.reduce((sum, entry) => sum + entry.score, 0) / totalAttempts : 0;
+      const bestTime = Math.min(...leaderboardEntries
+        .filter(entry => entry.completionTime)
+        .map(entry => entry.completionTime), Infinity) || null;
+      
+      return {
+        playerName,
+        totalAttempts,
+        bestScore,
+        averageScore: Math.round(averageScore * 100) / 100,
+        bestTime,
+        leaderboardEntries: leaderboardEntries.sort((a, b) => 
+          new Date(b.completedAt) - new Date(a.completedAt)
+        ),
+        gameSessions: gameSessions.sort((a, b) => 
+          new Date(b.createdAt) - new Date(a.createdAt)
+        )
+      };
+    } catch (error) {
+      console.error('Error getting user details:', error);
       throw error;
     }
   }

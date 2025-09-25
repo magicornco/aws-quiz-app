@@ -318,6 +318,172 @@ const UserList = styled.div`
   overflow-y: auto;
 `;
 
+const SearchContainer = styled.div`
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+`;
+
+const SearchButton = styled.button`
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 10px;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+`;
+
+const SearchResults = styled.div`
+  margin-top: 15px;
+`;
+
+const SearchResultItem = styled.div`
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid #667eea;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+  }
+`;
+
+const UserModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 90%;
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #eee;
+`;
+
+const CloseButton = styled.button`
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  
+  &:hover {
+    background: #c0392b;
+  }
+`;
+
+const UserStats = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+`;
+
+const UserStatCard = styled.div`
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+`;
+
+const UserStatValue = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
+const UserStatLabel = styled.div`
+  font-size: 0.9rem;
+  opacity: 0.9;
+`;
+
+const QuizHistory = styled.div`
+  margin-top: 20px;
+`;
+
+const QuizItem = styled.div`
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid ${props => props.$isCorrect ? '#27ae60' : '#e74c3c'};
+`;
+
+const QuizHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+const QuizScore = styled.span`
+  font-weight: bold;
+  color: ${props => props.$isCorrect ? '#27ae60' : '#e74c3c'};
+`;
+
+const QuizDate = styled.span`
+  color: #666;
+  font-size: 0.9rem;
+`;
+
+const QuizDetails = styled.div`
+  font-size: 0.9rem;
+  color: #666;
+`;
+
 const UserItem = styled.div`
   background: rgba(255, 255, 255, 0.05);
   padding: 15px;
@@ -363,6 +529,10 @@ const AdminPanel = () => {
     options: ['', '', '', ''],
     answer: ''
   });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showUserModal, setShowUserModal] = useState(false);
   const [sessionTimeout, setSessionTimeout] = useState(null);
 
   // Check for existing session on component mount
@@ -643,6 +813,51 @@ const AdminPanel = () => {
     } catch (error) {
       console.error('Error clearing game sessions:', error);
       showMessage('Error clearing game sessions', false);
+    }
+  };
+
+  const searchUsers = async () => {
+    if (searchQuery.trim().length < 2) {
+      showMessage('Search query must be at least 2 characters', false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${getApiUrl()}/admin/users/search?query=${encodeURIComponent(searchQuery)}`, {
+        headers: { 
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
+      });
+
+      if (response.ok) {
+        const results = await response.json();
+        setSearchResults(results);
+        showMessage(`Found ${results.length} users`, true);
+      } else {
+        showMessage('Failed to search users', false);
+      }
+    } catch (error) {
+      showMessage('Error searching users', false);
+    }
+  };
+
+  const getUserDetails = async (playerName) => {
+    try {
+      const response = await fetch(`${getApiUrl()}/admin/users/${encodeURIComponent(playerName)}`, {
+        headers: { 
+          'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+        }
+      });
+
+      if (response.ok) {
+        const userDetails = await response.json();
+        setSelectedUser(userDetails);
+        setShowUserModal(true);
+      } else {
+        showMessage('Failed to get user details', false);
+      }
+    } catch (error) {
+      showMessage('Error getting user details', false);
     }
   };
 
@@ -1034,6 +1249,53 @@ const AdminPanel = () => {
         </Section>
 
         <Section>
+          <SectionTitle>User Search</SectionTitle>
+          <SearchContainer>
+            <SearchInput
+              type="text"
+              placeholder="Search users by name (minimum 2 characters)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && searchUsers()}
+            />
+            <SearchButton 
+              onClick={searchUsers}
+              disabled={searchQuery.trim().length < 2}
+            >
+              Search Users
+            </SearchButton>
+            <ActionButton onClick={() => setSearchResults([])}>
+              Clear Results
+            </ActionButton>
+            
+            {searchResults.length > 0 && (
+              <SearchResults>
+                <h4>Search Results ({searchResults.length})</h4>
+                {searchResults.map((user, index) => (
+                  <SearchResultItem 
+                    key={index}
+                    onClick={() => getUserDetails(user.playerName)}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <strong>{user.playerName}</strong>
+                        <div style={{ color: '#666', fontSize: '0.9rem' }}>
+                          Best Score: {user.score}/{user.totalQuestions} 
+                          {user.completionTime && ` • Time: ${user.completionTime}s`}
+                        </div>
+                      </div>
+                      <div style={{ color: '#667eea', fontSize: '0.9rem' }}>
+                        Click to view details →
+                      </div>
+                    </div>
+                  </SearchResultItem>
+                ))}
+              </SearchResults>
+            )}
+          </SearchContainer>
+        </Section>
+
+        <Section>
           <SectionTitle>Users ({users.length})</SectionTitle>
           <ButtonGroup>
             <ActionButton onClick={clearLeaderboard} danger>Clear Leaderboard</ActionButton>
@@ -1064,6 +1326,57 @@ const AdminPanel = () => {
           </UserList>
         </Section>
       </Dashboard>
+
+      {showUserModal && selectedUser && (
+        <UserModal onClick={() => setShowUserModal(false)}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <ModalHeader>
+              <h2>User Details: {selectedUser.playerName}</h2>
+              <CloseButton onClick={() => setShowUserModal(false)}>×</CloseButton>
+            </ModalHeader>
+            
+            <UserStats>
+              <UserStatCard>
+                <UserStatValue>{selectedUser.totalAttempts}</UserStatValue>
+                <UserStatLabel>Total Attempts</UserStatLabel>
+              </UserStatCard>
+              <UserStatCard>
+                <UserStatValue>{selectedUser.bestScore}</UserStatValue>
+                <UserStatLabel>Best Score</UserStatLabel>
+              </UserStatCard>
+              <UserStatCard>
+                <UserStatValue>{selectedUser.averageScore}</UserStatValue>
+                <UserStatLabel>Average Score</UserStatLabel>
+              </UserStatCard>
+              <UserStatCard>
+                <UserStatValue>{selectedUser.bestTime ? `${selectedUser.bestTime}s` : 'N/A'}</UserStatValue>
+                <UserStatLabel>Best Time</UserStatLabel>
+              </UserStatCard>
+            </UserStats>
+
+            <QuizHistory>
+              <h3>Quiz History</h3>
+              {selectedUser.leaderboardEntries.map((entry, index) => (
+                <QuizItem key={index} $isCorrect={entry.score === entry.totalQuestions}>
+                  <QuizHeader>
+                    <QuizScore $isCorrect={entry.score === entry.totalQuestions}>
+                      {entry.score}/{entry.totalQuestions}
+                    </QuizScore>
+                    <QuizDate>
+                      {new Date(entry.completedAt).toLocaleString()}
+                      {entry.completionTime && ` • ${entry.completionTime}s`}
+                    </QuizDate>
+                  </QuizHeader>
+                  <QuizDetails>
+                    Score: {entry.score} out of {entry.totalQuestions} questions
+                    {entry.completionTime && ` • Completed in ${entry.completionTime} seconds`}
+                  </QuizDetails>
+                </QuizItem>
+              ))}
+            </QuizHistory>
+          </ModalContent>
+        </UserModal>
+      )}
     </Container>
   );
 };

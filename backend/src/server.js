@@ -301,6 +301,7 @@ app.post('/api/game/answer', async (req, res) => {
         playerName: gameSession.playerName,
         score: gameSession.score,
         totalQuestions: gameSession.questions.length,
+        completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
         completedAt: new Date().toISOString()
       });
       
@@ -309,6 +310,7 @@ app.post('/api/game/answer', async (req, res) => {
         timeUp: true,
         score: gameSession.score,
         totalQuestions: gameSession.questions.length,
+        completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
         answers: gameSession.answers || []
       });
     }
@@ -320,6 +322,7 @@ app.post('/api/game/answer', async (req, res) => {
         playerName: gameSession.playerName,
         score: gameSession.score,
         totalQuestions: gameSession.questions.length,
+        completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
         completedAt: new Date().toISOString()
       });
       
@@ -328,6 +331,7 @@ app.post('/api/game/answer', async (req, res) => {
         timeUp: true,
         score: gameSession.score,
         totalQuestions: gameSession.questions.length,
+        completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
         answers: gameSession.answers || []
       });
     }
@@ -366,6 +370,7 @@ app.post('/api/game/answer', async (req, res) => {
           playerName: gameSession.playerName,
           score: newScore,
           totalQuestions: gameSession.questions.length,
+          completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
           completedAt: new Date().toISOString()
         });
         
@@ -374,6 +379,7 @@ app.post('/api/game/answer', async (req, res) => {
           gameCompleted: true,
           score: newScore,
           totalQuestions: gameSession.questions.length,
+          completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
           nextQuestion: null,
           answers: updatedAnswers
         });
@@ -419,6 +425,7 @@ app.post('/api/game/answer', async (req, res) => {
           playerName: gameSession.playerName,
           score: gameSession.score,
           totalQuestions: gameSession.questions.length,
+          completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
           completedAt: new Date().toISOString()
         });
         
@@ -427,6 +434,7 @@ app.post('/api/game/answer', async (req, res) => {
           gameCompleted: true,
           score: gameSession.score,
           totalQuestions: gameSession.questions.length,
+          completionTime: Math.round(elapsedTime / 1000), // Convert to seconds
           nextQuestion: null,
           answers: updatedAnswers
         });
@@ -460,7 +468,8 @@ app.post('/api/game/answer', async (req, res) => {
 // Get leaderboard
 app.get('/api/leaderboard', async (req, res) => {
   try {
-    const leaderboard = await database.getLeaderboard(10);
+    const limit = parseInt(req.query.limit) || 10; // Default to 10, but allow custom limit
+    const leaderboard = await database.getLeaderboard(limit);
     res.json(leaderboard);
   } catch (error) {
     console.error('Error getting leaderboard:', error);
@@ -586,6 +595,34 @@ process.on('SIGTERM', async () => {
   console.log('Shutting down gracefully...');
   await database.disconnect();
   process.exit(0);
+});
+
+// Search users in leaderboard (admin)
+app.get('/api/admin/users/search', authenticateAdminHeader, async (req, res) => {
+  try {
+    const { query } = req.query;
+    if (!query || query.trim().length < 2) {
+      return res.status(400).json({ error: 'Search query must be at least 2 characters' });
+    }
+
+    const users = await database.searchUsers(query.trim());
+    res.json(users);
+  } catch (error) {
+    console.error('Error searching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Get user details with all quiz attempts (admin)
+app.get('/api/admin/users/:playerName', authenticateAdminHeader, async (req, res) => {
+  try {
+    const { playerName } = req.params;
+    const userDetails = await database.getUserDetails(playerName);
+    res.json(userDetails);
+  } catch (error) {
+    console.error('Error getting user details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Start server

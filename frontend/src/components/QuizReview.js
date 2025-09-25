@@ -91,9 +91,21 @@ const ButtonContainer = styled.div`
   gap: 20px;
   justify-content: center;
   margin-top: 30px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 1024px) {
+    gap: 15px;
+  }
   
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 10px;
+    padding: 0 10px;
   }
 `;
 
@@ -109,10 +121,32 @@ const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 1px;
   min-width: 150px;
+  flex: 1;
+  max-width: 200px;
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  @media (max-width: 1024px) {
+    padding: 12px 25px;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    min-width: 200px;
+    max-width: 250px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    min-width: 180px;
+    max-width: 220px;
   }
 `;
 
@@ -121,6 +155,14 @@ const PlayAgainButton = styled(Button)`
   
   &:hover {
     box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+  }
+`;
+
+const LeaderboardButton = styled(Button)`
+  background: linear-gradient(45deg, #28a745, #20c997);
+  
+  &:hover {
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
   }
 `;
 
@@ -174,7 +216,7 @@ const StatLabel = styled.div`
   letter-spacing: 1px;
 `;
 
-function QuizReview({ answers, score, totalQuestions, onPlayAgain, onGoHome }) {
+function QuizReview({ answers = [], score, totalQuestions, completionTime, onPlayAgain, onGoHome, onViewLeaderboard }) {
   const correctAnswers = answers.filter(answer => answer.isCorrect).length;
   const incorrectAnswers = totalQuestions - correctAnswers;
 
@@ -198,43 +240,59 @@ function QuizReview({ answers, score, totalQuestions, onPlayAgain, onGoHome }) {
               <StatValue>{Math.round((score / totalQuestions) * 100)}%</StatValue>
               <StatLabel>Success Rate</StatLabel>
             </StatItem>
+            {completionTime && (
+              <StatItem>
+                <StatValue>{completionTime}s</StatValue>
+                <StatLabel>Completion Time</StatLabel>
+              </StatItem>
+            )}
           </SummaryStats>
         </SummaryContainer>
 
-        {answers.map((answer, index) => (
-          <QuestionContainer key={index} isCorrect={answer.isCorrect}>
-            <QuestionNumber>
-              Question {answer.questionIndex + 1}
-            </QuestionNumber>
-            
-            <Question>
-              {answer.question}
-            </Question>
-            
-            <AnswerContainer>
-              <AnswerRow isUserAnswer={!answer.isCorrect}>
-                <AnswerLabel>Your Answer:</AnswerLabel>
-                <AnswerText>{answer.userAnswer}</AnswerText>
-                <StatusIcon>
-                  {answer.isCorrect ? '✅' : '❌'}
-                </StatusIcon>
-              </AnswerRow>
+        {answers.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
+            <p>📝 Detailed answers are not available for this quiz session.</p>
+            <p>Your final score: <strong>{score}/{totalQuestions}</strong></p>
+          </div>
+        ) : (
+          answers.map((answer, index) => (
+            <QuestionContainer key={index} isCorrect={answer.isCorrect}>
+              <QuestionNumber>
+                Question {answer.questionIndex + 1}
+              </QuestionNumber>
               
-              {!answer.isCorrect && (
-                <AnswerRow isCorrect={true}>
-                  <AnswerLabel>Correct Answer:</AnswerLabel>
-                  <AnswerText>{answer.correctAnswer}</AnswerText>
-                  <StatusIcon>✅</StatusIcon>
+              <Question>
+                {answer.question}
+              </Question>
+              
+              <AnswerContainer>
+                <AnswerRow isUserAnswer={!answer.isCorrect}>
+                  <AnswerLabel>Your Answer:</AnswerLabel>
+                  <AnswerText>{answer.userAnswer}</AnswerText>
+                  <StatusIcon>
+                    {answer.isCorrect ? '✅' : '❌'}
+                  </StatusIcon>
                 </AnswerRow>
-              )}
-            </AnswerContainer>
-          </QuestionContainer>
-        ))}
+                
+                {!answer.isCorrect && (
+                  <AnswerRow isCorrect={true}>
+                    <AnswerLabel>Correct Answer:</AnswerLabel>
+                    <AnswerText>{answer.correctAnswer}</AnswerText>
+                    <StatusIcon>✅</StatusIcon>
+                  </AnswerRow>
+                )}
+              </AnswerContainer>
+            </QuestionContainer>
+          ))
+        )}
         
         <ButtonContainer>
           <PlayAgainButton onClick={onPlayAgain}>
             Play Again
           </PlayAgainButton>
+          <LeaderboardButton onClick={onViewLeaderboard}>
+            View Leaderboard
+          </LeaderboardButton>
           <HomeButton onClick={onGoHome}>
             Go Home
           </HomeButton>

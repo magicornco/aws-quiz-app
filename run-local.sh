@@ -2,26 +2,29 @@
 
 echo "🚀 Starting AWS Quiz App for Local Development..."
 
-# Check if .env file exists
-if [ ! -f .env ]; then
-    echo "⚠️  .env file not found. Creating template..."
-    cat > .env << EOF
-# AWS Credentials for Local Development
+# Check if backend .env file exists
+if [ ! -f ./backend/.env ]; then
+    echo "⚠️  Backend .env file not found. Creating template..."
+    cat > ./backend/.env << EOF
+# AWS Credentials
+AWS_REGION=us-east-2
 AWS_ACCESS_KEY_ID=your_aws_access_key_here
 AWS_SECRET_ACCESS_KEY=your_aws_secret_key_here
-AWS_REGION=us-east-1
+
+# DynamoDB Table Names (Local Development)
+DYNAMODB_QUESTIONS_TABLE=aws-quiz-local-questions
+DYNAMODB_GAME_SESSIONS_TABLE=aws-quiz-local-game-sessions
+DYNAMODB_LEADERBOARD_TABLE=aws-quiz-local-leaderboard
 EOF
-    echo "📝 Please edit .env file with your AWS credentials"
+    echo "📝 Please edit ./backend/.env file with your AWS credentials"
     echo "   Then run this script again."
     exit 1
 fi
 
-# Load environment variables
-export $(cat .env | grep -v '^#' | xargs)
-
-# Check if AWS credentials are set
-if [ -z "$AWS_ACCESS_KEY_ID" ] || [ "$AWS_ACCESS_KEY_ID" = "your_aws_access_key_here" ]; then
-    echo "❌ Please set your AWS credentials in .env file"
+# Check if AWS credentials are set in backend .env
+if grep -q "your_aws_access_key_here" ./backend/.env; then
+    echo "❌ Please set your AWS credentials in ./backend/.env file"
+    echo "   Edit the file and replace 'your_aws_access_key_here' with your actual credentials"
     exit 1
 fi
 
@@ -55,3 +58,6 @@ echo "   Frontend: docker compose -f docker-compose.local.yml logs -f frontend"
 echo "   Backend:  docker compose -f docker-compose.local.yml logs -f backend"
 echo ""
 echo "🛑 To stop: docker compose -f docker-compose.local.yml down"
+echo ""
+echo "🔍 Container status:"
+docker compose -f docker-compose.local.yml ps

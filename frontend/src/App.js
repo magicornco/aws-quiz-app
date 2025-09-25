@@ -116,9 +116,9 @@ function App() {
     loadLeaderboard();
   }, []);
 
-  const loadLeaderboard = async () => {
+  const loadLeaderboard = async (limit = 10) => {
     try {
-      const response = await gameAPI.getLeaderboard();
+      const response = await gameAPI.getLeaderboard(limit);
       setLeaderboard(response);
     } catch (error) {
       console.error('Failed to load leaderboard:', error);
@@ -170,14 +170,16 @@ function App() {
       if (response.gameCompleted) {
         setResult({
           score: response.score,
-          totalQuestions: response.totalQuestions
+          totalQuestions: response.totalQuestions,
+          completionTime: response.completionTime
         });
         setQuizAnswers(response.answers || []);
         setCurrentPage(GAME_STATES.RESULT);
       } else if (response.timeUp) {
         setResult({
           score: response.score,
-          totalQuestions: response.totalQuestions
+          totalQuestions: response.totalQuestions,
+          completionTime: response.completionTime
         });
         setQuizAnswers([]);
         setCurrentPage(GAME_STATES.RESULT);
@@ -203,7 +205,8 @@ function App() {
       const response = await gameAPI.submitAnswer(gameData.gameId, 'TIME_UP');
       setResult({
         score: response.score,
-        totalQuestions: response.totalQuestions
+        totalQuestions: response.totalQuestions,
+        completionTime: response.completionTime
       });
       setQuizAnswers(response.answers || []);
       setCurrentPage(GAME_STATES.RESULT);
@@ -234,7 +237,7 @@ function App() {
       setLoading(true);
       setError(null);
       
-      await loadLeaderboard();
+      await loadLeaderboard(50); // Load more entries for leaderboard page
       setCurrentPage(GAME_STATES.LEADERBOARD);
     } catch (error) {
       showError(error.message);
@@ -279,7 +282,7 @@ function App() {
             onPlayAgain={playAgain}
             onViewLeaderboard={viewLeaderboard}
             onViewReview={viewReview}
-            hasAnswers={quizAnswers.length > 0}
+            hasAnswers={true} // Always show review button
           />
         );
       
@@ -289,7 +292,9 @@ function App() {
             answers={quizAnswers}
             score={result.score}
             totalQuestions={result.totalQuestions}
+            completionTime={result.completionTime}
             onPlayAgain={playAgain}
+            onViewLeaderboard={viewLeaderboard}
             onGoHome={() => setCurrentPage(GAME_STATES.HOME)}
           />
         );

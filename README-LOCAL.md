@@ -6,16 +6,16 @@ Bu dosya local development için gerekli adımları açıklar.
 
 ### 1. AWS Credentials Ayarlayın
 
-`.env` dosyası oluşturun:
+Backend'de `.env` dosyası oluşturun:
 ```bash
-cp .env.example .env
+./run-local.sh
 ```
 
-`.env` dosyasını düzenleyin:
+Script otomatik olarak `./backend/.env` dosyası oluşturacak. Dosyayı düzenleyin:
 ```env
-AWS_ACCESS_KEY_ID=your_aws_access_key_here
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key_here
-AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=your_actual_access_key
+AWS_SECRET_ACCESS_KEY=your_actual_secret_key
+AWS_REGION=us-east-2
 ```
 
 ### 2. Uygulamayı Başlatın
@@ -68,9 +68,9 @@ docker compose -f docker-compose.local.yml up --build --force-recreate -d
 ## 🗄️ Veritabanı
 
 Local development için DynamoDB kullanılır. Tablolar otomatik olarak oluşturulur:
-- `aws-quiz-local-questions`
-- `aws-quiz-local-users`
-- `aws-quiz-local-game-sessions`
+- `aws-quiz-local-questions` - Quiz soruları
+- `aws-quiz-local-game-sessions` - Oyun oturumları
+- `aws-quiz-local-leaderboard` - Liderlik tablosu
 
 ## 🔍 Sorun Giderme
 
@@ -114,5 +114,7 @@ aws-quiz-app/
 | Port | 3001, 5001 | 80, 443 |
 | Load Balancer | Yok | Nginx |
 | SSL | HTTP | HTTPS (Cloudflare) |
-| Replica | 1 | 3 |
+| Backend Replica | 1 | 3 |
+| Frontend Replica | 1 | 3 |
 | Volume Mount | Live reload | Build |
+| Environment | Development | Production |

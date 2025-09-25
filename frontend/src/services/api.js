@@ -69,9 +69,9 @@ export const gameAPI = {
   },
 
   // Get leaderboard
-  getLeaderboard: async () => {
+  getLeaderboard: async (limit = 10) => {
     try {
-      const response = await api.get('/leaderboard');
+      const response = await api.get(`/leaderboard?limit=${limit}`);
       return response.data;
     } catch (error) {
       throw new Error(error.response?.data?.error || 'Failed to get leaderboard');

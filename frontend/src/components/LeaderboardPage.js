@@ -120,6 +120,13 @@ const ScoreCell = styled(TableCell)`
   font-weight: bold;
 `;
 
+const TimeCell = styled(TableCell)`
+  text-align: center;
+  font-weight: bold;
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+`;
+
 const DateCell = styled(TableCell)`
   color: #666;
   font-size: 0.9rem;
@@ -240,6 +247,7 @@ function LeaderboardPage({ leaderboard, onPlayAgain, onGoHome, loading }) {
                 <TableHeaderCell>Rank</TableHeaderCell>
                 <TableHeaderCell>Player</TableHeaderCell>
                 <TableHeaderCell>Score</TableHeaderCell>
+                <TableHeaderCell>Time</TableHeaderCell>
                 <TableHeaderCell>Date</TableHeaderCell>
               </tr>
             </TableHeader>
@@ -251,6 +259,7 @@ function LeaderboardPage({ leaderboard, onPlayAgain, onGoHome, loading }) {
                   </RankCell>
                   <NameCell>{entry.playerName}</NameCell>
                   <ScoreCell>{entry.score}/{entry.totalQuestions}</ScoreCell>
+                  <TimeCell>{entry.completionTime ? `${entry.completionTime}s` : 'N/A'}</TimeCell>
                   <DateCell>{formatDate(entry.completedAt)}</DateCell>
                 </TableRow>
               ))}

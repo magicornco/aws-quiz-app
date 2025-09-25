@@ -73,9 +73,21 @@ const ButtonContainer = styled.div`
   gap: 20px;
   justify-content: center;
   margin-top: 30px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 1024px) {
+    gap: 15px;
+  }
   
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 10px;
+    padding: 0 10px;
   }
 `;
 
@@ -91,10 +103,32 @@ const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 1px;
   min-width: 150px;
+  flex: 1;
+  max-width: 200px;
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  @media (max-width: 1024px) {
+    padding: 12px 25px;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    min-width: 200px;
+    max-width: 250px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    min-width: 180px;
+    max-width: 220px;
   }
 `;
 
@@ -221,6 +255,12 @@ function ResultPage({ result, onPlayAgain, onViewLeaderboard, onViewReview, hasA
             <StatValue>{Math.round((result.score / result.totalQuestions) * 100)}%</StatValue>
             <StatLabel>Success Rate</StatLabel>
           </StatItem>
+          {result.completionTime && (
+            <StatItem>
+              <StatValue>{result.completionTime}s</StatValue>
+              <StatLabel>Completion Time</StatLabel>
+            </StatItem>
+          )}
         </StatsContainer>
         
         <ButtonContainer>
