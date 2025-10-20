@@ -271,29 +271,29 @@ const LeaderboardContainer = styled.div`
   top: 20px;
   right: 20px;
   background: linear-gradient(135deg, rgba(255, 107, 53, 0.95), rgba(247, 147, 30, 0.95));
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
-  backdrop-filter: blur(15px);
-  max-width: 380px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+  backdrop-filter: blur(10px);
+  max-width: 300px;
   width: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   z-index: 100;
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(255, 107, 53, 0.4);
   }
   
   @media (max-width: 1200px) {
-    max-width: 320px;
-    padding: 18px;
+    max-width: 280px;
+    padding: 12px;
   }
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    max-width: 280px;
-    padding: 15px;
+    max-width: 250px;
+    padding: 10px;
     top: 15px;
     right: 15px;
   }
@@ -306,7 +306,7 @@ const LeaderboardContainer = styled.div`
     position: relative;
     top: auto;
     right: auto;
-    margin: 20px auto;
+    margin: 15px auto;
     max-width: 100%;
     display: block;
     transform: none;
@@ -317,82 +317,82 @@ const LeaderboardContainer = styled.div`
   }
   
   @media (max-width: 480px) {
-    margin: 15px;
-    padding: 15px;
-    border-radius: 15px;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 10px;
   }
 `;
 
 const LeaderboardTitle = styled.h3`
   color: white;
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.4);
-  letter-spacing: 0.5px;
+  gap: 6px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 0.3px;
   
   @media (max-width: 1200px) {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   
   @media (max-width: 768px) {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
   }
   
   @media (max-width: 480px) {
-    font-size: 1.2rem;
-    gap: 8px;
+    font-size: 1rem;
+    gap: 4px;
   }
 `;
 
 const LeaderboardSubtitle = styled.p`
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 12px;
   text-align: center;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  letter-spacing: 0.2px;
   
   @media (max-width: 1200px) {
-    font-size: 0.9rem;
-    margin-bottom: 18px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
   }
   
   @media (max-width: 768px) {
-    font-size: 0.95rem;
-    margin-bottom: 15px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
   }
   
   @media (max-width: 480px) {
-    font-size: 0.85rem;
-    margin-bottom: 12px;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
   }
 `;
 
 const LeaderboardList = styled.div`
-  max-height: 450px;
+  max-height: 300px;
   overflow-y: auto;
-  padding-right: 5px;
+  padding-right: 3px;
   
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
   
   &::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 2px;
   }
   
   &::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    border-radius: 2px;
     transition: background 0.3s ease;
   }
   
@@ -401,11 +401,11 @@ const LeaderboardList = styled.div`
   }
   
   @media (max-width: 768px) {
-    max-height: 350px;
+    max-height: 250px;
   }
   
   @media (max-width: 480px) {
-    max-height: 300px;
+    max-height: 200px;
   }
 `;
 
@@ -413,19 +413,16 @@ const LeaderboardItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 18px;
-  margin: 8px 0;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(5px);
+  padding: 8px 12px;
+  margin: 4px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateX(8px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(3px);
   }
   
   &:last-child {
@@ -433,92 +430,64 @@ const LeaderboardItem = styled.div`
   }
   
   @media (max-width: 768px) {
-    padding: 12px 15px;
-    margin: 6px 0;
+    padding: 6px 10px;
+    margin: 3px 0;
     
     &:hover {
-      transform: translateX(5px) scale(1.01);
+      transform: translateX(2px);
     }
   }
   
   @media (max-width: 480px) {
-    padding: 10px 12px;
-    margin: 5px 0;
-    border-radius: 10px;
+    padding: 5px 8px;
+    margin: 2px 0;
+    border-radius: 6px;
     
     &:hover {
-      transform: translateX(3px);
+      transform: translateX(1px);
     }
   }
 `;
 
 const PlayerName = styled.span`
-  font-weight: 700;
+  font-weight: 600;
   color: white;
-  font-size: 1.1rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  letter-spacing: 0.3px;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  letter-spacing: 0.2px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
   
   @media (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 `;
 
 const PlayerScore = styled.span`
   color: #FFFFFF;
-  font-weight: 800;
-  font-size: 1.1rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-  padding: 6px 12px;
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
-    transform: scale(1.05);
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    padding: 5px 10px;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
-    padding: 4px 8px;
-    border-radius: 12px;
-  }
-`;
-
-const TimeScore = styled.span`
-  color: #FFD700;
   font-weight: 700;
   font-size: 0.85rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.2));
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  background: rgba(255, 255, 255, 0.2);
   padding: 3px 8px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 215, 0, 0.4);
-  margin-left: 6px;
-  display: inline-block;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+  white-space: nowrap;
   
   &:hover {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 215, 0, 0.3));
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3);
   }
   
   @media (max-width: 768px) {
     font-size: 0.8rem;
     padding: 2px 6px;
-    margin-left: 4px;
   }
   
   @media (max-width: 480px) {
@@ -528,47 +497,77 @@ const TimeScore = styled.span`
   }
 `;
 
-const RankIcon = styled.span`
-  margin-right: 10px;
-  font-size: 1.2rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-  transition: all 0.3s ease;
+const TimeScore = styled.span`
+  color: #FFD700;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  background: rgba(255, 215, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  margin-left: 4px;
+  display: inline-block;
+  transition: all 0.2s ease;
+  white-space: nowrap;
   
   &:hover {
-    transform: scale(1.1);
+    background: rgba(255, 215, 0, 0.3);
   }
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    margin-right: 8px;
+    font-size: 0.7rem;
+    padding: 1px 4px;
+    margin-left: 3px;
   }
   
   @media (max-width: 480px) {
-    font-size: 1rem;
-    margin-right: 6px;
+    font-size: 0.65rem;
+    padding: 1px 3px;
+    border-radius: 6px;
+  }
+`;
+
+const RankIcon = styled.span`
+  margin-right: 6px;
+  font-size: 1rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-right: 5px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    margin-right: 4px;
   }
 `;
 
 const EmptyLeaderboard = styled.div`
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 30px 20px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 20px 15px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
   
   @media (max-width: 768px) {
-    font-size: 0.95rem;
-    padding: 25px 15px;
+    font-size: 0.8rem;
+    padding: 15px 10px;
   }
   
   @media (max-width: 480px) {
-    font-size: 0.9rem;
-    padding: 20px 10px;
+    font-size: 0.75rem;
+    padding: 12px 8px;
   }
 `;
 
