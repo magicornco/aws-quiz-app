@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import magicornLogo from '../assets/magicorn-logo.png';
-// Game Industry Conference Partners
+// Cloud Provider Partners
+import awsLogo from '../assets/aws-logo.png';
+import azureLogo from '../assets/microsoft-azure.png';
+import googleLogo from '../assets/google-logo.png';
+import ovhLogo from '../assets/ovhcloud-logo.png';
+import huaweiLogo from '../assets/huawei-logo.png';
+import hetznerLogo from '../assets/hetzner-logo.png';
+import digitalOceanLogo from '../assets/dijital-ocean.png';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -510,19 +517,19 @@ const PartnerLogoImage = styled.img`
 
 const LogoText = styled.span`
   color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  display: none;
   line-height: 1.2;
   text-align: center;
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -712,13 +719,81 @@ function HomePage({ onStartGame, leaderboard = [] }) {
       <PartnerLogos>
         <LogosRow>
           <PartnerLogo>
-            <LogoText>🎮 Game Industry Conference</LogoText>
+            <PartnerLogoImage 
+              src={awsLogo} 
+              alt="Amazon Web Services"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>Amazon Web Services</LogoText>
           </PartnerLogo>
           <PartnerLogo>
-            <LogoText>🏆 Istanbul - Lütfi Kırdar</LogoText>
+            <PartnerLogoImage 
+              src={azureLogo} 
+              alt="Microsoft Azure"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>Microsoft Azure</LogoText>
           </PartnerLogo>
           <PartnerLogo>
-            <LogoText>🎯 The Ultimate Experience</LogoText>
+            <PartnerLogoImage 
+              src={googleLogo} 
+              alt="Google Cloud"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>Google Cloud</LogoText>
+          </PartnerLogo>
+          <PartnerLogo>
+            <PartnerLogoImage 
+              src={ovhLogo} 
+              alt="OVHcloud"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>OVHcloud</LogoText>
+          </PartnerLogo>
+          <PartnerLogo>
+            <PartnerLogoImage 
+              src={huaweiLogo} 
+              alt="Huawei Cloud"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>Huawei Cloud</LogoText>
+          </PartnerLogo>
+          <PartnerLogo>
+            <PartnerLogoImage 
+              src={hetznerLogo} 
+              alt="Hetzner"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>Hetzner</LogoText>
+          </PartnerLogo>
+          <PartnerLogo>
+            <PartnerLogoImage 
+              src={digitalOceanLogo} 
+              alt="DigitalOcean"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <LogoText>DigitalOcean</LogoText>
           </PartnerLogo>
         </LogosRow>
       </PartnerLogos>
