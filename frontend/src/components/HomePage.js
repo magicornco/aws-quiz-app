@@ -459,6 +459,14 @@ const PlayerName = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: #FFD700;
+    transform: scale(1.02);
+  }
   
   @media (max-width: 768px) {
     font-size: 0.85rem;
@@ -568,6 +576,57 @@ const EmptyLeaderboard = styled.div`
   @media (max-width: 480px) {
     font-size: 0.75rem;
     padding: 12px 8px;
+  }
+`;
+
+const Tooltip = styled.div`
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  margin-bottom: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+  }
+`;
+
+const TooltipTrigger = styled.div`
+  position: relative;
+  
+  &:hover ${Tooltip} {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -795,7 +854,12 @@ function HomePage({ onStartGame, leaderboard = [] }) {
               <LeaderboardItem key={index}>
                 <div>
                   <RankIcon>{getRankIcon(index + 1)}</RankIcon>
-                  <PlayerName>{entry.playerName}</PlayerName>
+                  <TooltipTrigger>
+                    <PlayerName>{entry.playerName}</PlayerName>
+                    <Tooltip>
+                      {entry.playerName}
+                    </Tooltip>
+                  </TooltipTrigger>
                 </div>
                 <div>
                   <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
@@ -825,7 +889,12 @@ function HomePage({ onStartGame, leaderboard = [] }) {
               <LeaderboardItem key={index}>
                 <div>
                   <RankIcon>{getRankIcon(index + 1)}</RankIcon>
-                  <PlayerName>{entry.playerName}</PlayerName>
+                  <TooltipTrigger>
+                    <PlayerName>{entry.playerName}</PlayerName>
+                    <Tooltip>
+                      {entry.playerName}
+                    </Tooltip>
+                  </TooltipTrigger>
                 </div>
                 <div>
                   <PlayerScore>{entry.score}/{entry.totalQuestions}</PlayerScore>
