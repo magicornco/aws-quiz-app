@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import magicornLogo from '../assets/magicorn-logo.png';
-import { playGameStartSound, playCorrectAnswerSound, playWrongAnswerSound, playTimeUpSound } from '../utils/soundUtils';
+import { playGameStartSound, playCorrectAnswerSound, playWrongAnswerSound, playTimeUpSound, playWarningSound } from '../utils/soundUtils';
 
 const Container = styled.div`
   min-height: 100vh;
-  background: #020722;
+  background: ${props => props.$isWarning ? '#ff0000' : '#020722'};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
   font-family: 'Arial', sans-serif;
+  transition: background-color 0.5s ease;
+  animation: ${props => props.$isWarning ? 'flashWarning 0.5s infinite alternate' : 'none'};
+  
+  @keyframes flashWarning {
+    0% { background-color: #ff0000; }
+    100% { background-color: #cc0000; }
+  }
 `;
 
 const LogoSection = styled.div`
@@ -37,7 +44,7 @@ const Logo = styled.img`
 `;
 
 const Header = styled.div`
-  background: rgba(255, 255, 255, 0.95);
+  background: ${props => props.$isWarning ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)'};
   padding: 20px 40px;
   border-radius: 15px;
   margin-bottom: 30px;
@@ -46,7 +53,9 @@ const Header = styled.div`
   align-items: center;
   width: 100%;
   max-width: 800px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: ${props => props.$isWarning ? '0 10px 20px rgba(255,0,0,0.4)' : '0 10px 20px rgba(0,0,0,0.2)'};
+  border: ${props => props.$isWarning ? '2px solid #ff0000' : 'none'};
+  transition: all 0.3s ease;
 `;
 
 const PlayerInfo = styled.div`
@@ -58,8 +67,15 @@ const PlayerInfo = styled.div`
 const Timer = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
-  color: ${props => props.$timeLeft < 30 ? '#FF6B35' : '#667eea'};
+  color: ${props => props.$timeLeft < 10 ? '#FFFFFF' : props.$timeLeft < 30 ? '#FF6B35' : '#667eea'};
   text-align: center;
+  text-shadow: ${props => props.$timeLeft < 10 ? '2px 2px 4px rgba(0,0,0,0.8)' : 'none'};
+  animation: ${props => props.$timeLeft < 10 ? 'pulseWarning 0.5s infinite alternate' : 'none'};
+  
+  @keyframes pulseWarning {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
 `;
 
 const ProgressBar = styled.div`
@@ -79,13 +95,15 @@ const Progress = styled.div`
 `;
 
 const QuizContainer = styled.div`
-  background: rgba(255, 255, 255, 0.95);
+  background: ${props => props.$isWarning ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)'};
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: ${props => props.$isWarning ? '0 20px 40px rgba(255,0,0,0.5)' : '0 20px 40px rgba(0,0,0,0.3)'};
   backdrop-filter: blur(10px);
   max-width: 800px;
   width: 100%;
+  border: ${props => props.$isWarning ? '3px solid #ff0000' : 'none'};
+  transition: all 0.3s ease;
 `;
 
 const QuestionNumber = styled.div`
@@ -193,12 +211,15 @@ function QuizPage({ gameData, onAnswer, onTimeUp }) {
   const [timeLeft, setTimeLeft] = useState(gameData?.timeLimit ? gameData.timeLimit / 1000 : 60);
   const [currentAnswer, setCurrentAnswer] = useState('');
   const [feedback, setFeedback] = useState(null);
+  
+  // Warning state for last 10 seconds
+  const isWarning = timeLeft <= 10;
 
   // Add null check for gameData and currentQuestion after hooks
   if (!gameData || !gameData.currentQuestion) {
     return (
-      <Container>
-        <QuizContainer>
+      <Container $isWarning={false}>
+        <QuizContainer $isWarning={false}>
           <Question>Loading quiz...</Question>
         </QuizContainer>
       </Container>
@@ -215,6 +236,10 @@ function QuizPage({ gameData, onAnswer, onTimeUp }) {
           playTimeUpSound();
           onTimeUp();
           return 0;
+        }
+        // Play warning sound when reaching 10 seconds
+        if (prev === 10) {
+          playWarningSound();
         }
         return prev - 1;
       });
@@ -246,12 +271,12 @@ function QuizPage({ gameData, onAnswer, onTimeUp }) {
   const progress = ((gameData.currentQuestionIndex + 1) / gameData.totalQuestions) * 100;
 
   return (
-    <Container>
+    <Container $isWarning={isWarning}>
       <LogoSection>
         <Logo src={magicornLogo} alt="Magicorn Logo" />
       </LogoSection>
       
-      <Header>
+      <Header $isWarning={isWarning}>
         <PlayerInfo>
           Player: {gameData.playerName}
         </PlayerInfo>
@@ -264,7 +289,7 @@ function QuizPage({ gameData, onAnswer, onTimeUp }) {
         <Progress $progress={progress} />
       </ProgressBar>
 
-      <QuizContainer>
+      <QuizContainer $isWarning={isWarning}>
         <QuestionNumber>
           Question {gameData.currentQuestionIndex + 1} of {gameData.totalQuestions}
         </QuestionNumber>

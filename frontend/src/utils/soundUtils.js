@@ -142,3 +142,35 @@ export const playTimeUpSound = () => {
     console.log('Audio not supported or blocked by browser');
   }
 };
+
+export const playWarningSound = () => {
+  try {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    const createTone = (frequency, duration, startTime) => {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(frequency, startTime);
+      oscillator.type = 'square';
+      
+      gainNode.gain.setValueAtTime(0, startTime);
+      gainNode.gain.linearRampToValueAtTime(0.2, startTime + 0.01);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+      
+      oscillator.start(startTime);
+      oscillator.stop(startTime + duration);
+    };
+    
+    const now = audioContext.currentTime;
+    
+    // Warning sound - quick beep
+    createTone(800, 0.1, now);      // High beep
+    
+  } catch (error) {
+    console.log('Audio not supported or blocked by browser');
+  }
+};
