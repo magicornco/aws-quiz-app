@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Load Balancer
+  nginx:
+    image: nginx:alpine
+    container_name: quiz-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - quiz-network
+
+  # Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: quiz-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      # AWS DynamoDB Configuration
+      AWS_REGION: us-east-2
+      DYNAMODB_QUESTIONS_TABLE: aws-quiz-questions
+      DYNAMODB_GAME_SESSIONS_TABLE: aws-quiz-game-sessions
+      DYNAMODB_LEADERBOARD_TABLE: aws-quiz-leaderboard
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/.env:/app/.env:ro
+    networks:
+      - quiz-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: quiz-frontend
+    restart: unless-stopped
+    environment:
+      - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+    depends_on:
+      - backend
+    networks:
+      - quiz-network
+
+networks:
+  quiz-network:
+    driver: bridge

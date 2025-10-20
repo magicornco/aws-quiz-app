@@ -1,0 +1,141 @@
+version: '3.8'
+
+services:
+  # Load Balancer with SSL
+  nginx:
+    image: nginx:alpine
+    container_name: quiz-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx-ssl.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/ssl:ro
+    depends_on:
+      - backend-1
+      - backend-2
+      - backend-3
+      - frontend-1
+      - frontend-2
+      - frontend-3
+    networks:
+      - quiz-network
+
+  # Backend Replicas
+  backend-1:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: quiz-backend-1
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      # AWS DynamoDB Configuration
+      AWS_REGION: us-east-2
+      DYNAMODB_QUESTIONS_TABLE: aws-quiz-questions
+      DYNAMODB_GAME_SESSIONS_TABLE: aws-quiz-game-sessions
+      DYNAMODB_LEADERBOARD_TABLE: aws-quiz-leaderboard
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/.env:/app/.env:ro
+    networks:
+      - quiz-network
+
+  backend-2:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: quiz-backend-2
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      AWS_REGION: us-east-2
+      DYNAMODB_QUESTIONS_TABLE: aws-quiz-questions
+      DYNAMODB_GAME_SESSIONS_TABLE: aws-quiz-game-sessions
+      DYNAMODB_LEADERBOARD_TABLE: aws-quiz-leaderboard
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/.env:/app/.env:ro
+    networks:
+      - quiz-network
+
+  backend-3:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: quiz-backend-3
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      AWS_REGION: us-east-2
+      DYNAMODB_QUESTIONS_TABLE: aws-quiz-questions
+      DYNAMODB_GAME_SESSIONS_TABLE: aws-quiz-game-sessions
+      DYNAMODB_LEADERBOARD_TABLE: aws-quiz-leaderboard
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/.env:/app/.env:ro
+    networks:
+      - quiz-network
+
+  # Frontend Replicas
+  frontend-1:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: quiz-frontend-1
+    restart: unless-stopped
+    environment:
+      - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+    depends_on:
+      - backend-1
+      - backend-2
+      - backend-3
+    networks:
+      - quiz-network
+
+  frontend-2:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: quiz-frontend-2
+    restart: unless-stopped
+    environment:
+      - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+    depends_on:
+      - backend-1
+      - backend-2
+      - backend-3
+    networks:
+      - quiz-network
+
+  frontend-3:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: quiz-frontend-3
+    restart: unless-stopped
+    environment:
+      - REACT_APP_API_URL=/api
+      - DISABLE_ESLINT_PLUGIN=true
+      - GENERATE_SOURCEMAP=false
+      - FAST_REFRESH=false
+    depends_on:
+      - backend-1
+      - backend-2
+      - backend-3
+    networks:
+      - quiz-network
+
+networks:
+  quiz-network:
+    driver: bridge
