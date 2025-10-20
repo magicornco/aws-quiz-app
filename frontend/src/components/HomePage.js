@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import magicornLogo from '../assets/magicorn-logo.png';
-import advancedTierLogo from '../assets/aws-adventedtier-delivery-partner.png';
-import wellArchitectedLogo from '../assets/aws-well-delivery-partner.png';
-import ecsLogo from '../assets/aws-ecs-delivery-partner.png';
-import rdsLogo from '../assets/aws-rds-delivery-partner.png';
-import eksLogo from '../assets/aws-eks-delivery-partner.png';
-import cloudfrontLogo from '../assets/aws-cloudfront-delivery-partner.png';
+// Game Industry Conference Partners
 
 const Container = styled.div`
   min-height: 100vh;
@@ -515,11 +510,20 @@ const PartnerLogoImage = styled.img`
 
 const LogoText = styled.span`
   color: white;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-  display: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  display: block;
   line-height: 1.2;
+  text-align: center;
+  
+  @media (max-width: 1024px) and (orientation: landscape) {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 // Tablet için collapsible leaderboard butonu
@@ -612,7 +616,7 @@ function HomePage({ onStartGame, leaderboard = [] }) {
           🏆 Leaderboard
         </LeaderboardTitle>
         <LeaderboardSubtitle>
-          Top AWS Quiz Champions
+          Top Game Champions
         </LeaderboardSubtitle>
         <LeaderboardList>
           {leaderboard.length === 0 ? (
@@ -645,7 +649,7 @@ function HomePage({ onStartGame, leaderboard = [] }) {
       
       <CollapsibleLeaderboard $isOpen={isLeaderboardOpen}>
         <LeaderboardTitle>🏆 Leaderboard</LeaderboardTitle>
-        <LeaderboardSubtitle>Top AWS Quiz Champions</LeaderboardSubtitle>
+        <LeaderboardSubtitle>Top Game Champions</LeaderboardSubtitle>
         <LeaderboardList>
           {leaderboard.length === 0 ? (
             <EmptyLeaderboard>No scores yet. Be the first!</EmptyLeaderboard>
@@ -673,8 +677,8 @@ function HomePage({ onStartGame, leaderboard = [] }) {
           <Logo src={magicornLogo} alt="Magicorn Logo" />
         </LogoContainer>
         
-        <Title>AWS Quiz Challenge</Title>
-        <Subtitle>Test Your AWS Knowledge!</Subtitle>
+        <Title>Game Quiz</Title>
+        <Subtitle>The Ultimate Game Industry Conference</Subtitle>
         <TimeInfo>⏱️ 1 minute to answer 5 questions</TimeInfo>
         
         <FormContainer>
@@ -708,70 +712,13 @@ function HomePage({ onStartGame, leaderboard = [] }) {
       <PartnerLogos>
         <LogosRow>
           <PartnerLogo>
-            <PartnerLogoImage 
-              src={advancedTierLogo} 
-              alt="Amazon Advanced Tier Services"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <LogoText>Amazon Advanced Tier Services</LogoText>
+            <LogoText>🎮 Game Industry Conference</LogoText>
           </PartnerLogo>
           <PartnerLogo>
-            <PartnerLogoImage 
-              src={wellArchitectedLogo} 
-              alt="AWS Well-Architected"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <LogoText>AWS Well-Architected</LogoText>
+            <LogoText>🏆 Istanbul - Lütfi Kırdar</LogoText>
           </PartnerLogo>
           <PartnerLogo>
-            <PartnerLogoImage 
-              src={ecsLogo} 
-              alt="Amazon ECS Delivery"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <LogoText>Amazon ECS Delivery</LogoText>
-          </PartnerLogo>
-          <PartnerLogo>
-            <PartnerLogoImage 
-              src={rdsLogo} 
-              alt="Amazon RDS Service Delivery"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <LogoText>Amazon RDS Service Delivery</LogoText>
-          </PartnerLogo>
-          <PartnerLogo>
-            <PartnerLogoImage 
-              src={eksLogo} 
-              alt="Amazon EKS Service Delivery"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <LogoText>Amazon EKS Service Delivery</LogoText>
-          </PartnerLogo>
-          <PartnerLogo>
-            <PartnerLogoImage 
-              src={cloudfrontLogo} 
-              alt="Amazon CloudFront Delivery"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <LogoText>Amazon CloudFront Delivery</LogoText>
+            <LogoText>🎯 The Ultimate Experience</LogoText>
           </PartnerLogo>
         </LogosRow>
       </PartnerLogos>

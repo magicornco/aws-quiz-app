@@ -1,302 +1,602 @@
 [
   {
     "id": 1,
-    "question": "What is the most popular virtual server service in Amazon Web Services?",
-    "options": ["EC2", "S3", "Lambda", "RDS"],
-    "answer": "EC2"
+    "question": "Which company developed the Grand Theft Auto series?",
+    "options": ["Rockstar Games", "Ubisoft", "EA", "Activision"],
+    "answer": "Rockstar Games"
   },
   {
     "id": 2,
-    "question": "Which AWS service is used for object-based file storage?",
-    "options": ["EC2", "S3", "Lambda", "DynamoDB"],
-    "answer": "S3"
+    "question": "What is the main character’s name in The Legend of Zelda series?",
+    "options": ["Zelda", "Link", "Ganon", "Sheik"],
+    "answer": "Link"
   },
   {
     "id": 3,
-    "question": "What is the best IAM (Identity and Access Management) entity for providing temporary access to AWS resources?",
-    "options": ["User", "Group", "Role", "Policy"],
-    "answer": "Role"
+    "question": "In which game do players build and explore a blocky 3D world?",
+    "options": ["Roblox", "Minecraft", "Terraria", "Fortnite"],
+    "answer": "Minecraft"
   },
   {
     "id": 4,
-    "question": "Which component acts as a virtual firewall for your EC2 instance?",
-    "options": ["Network ACL (NACL)", "Security Group", "Internet Gateway", "VPC"],
-    "answer": "Security Group"
+    "question": "What year was the first PlayStation console released?",
+    "options": ["1992", "1994", "1996", "1998"],
+    "answer": "1994"
   },
   {
     "id": 5,
-    "question": "Which service is used to visualize, understand, and manage your AWS costs?",
-    "options": ["AWS Budgets", "AWS Cost Explorer", "AWS Trusted Advisor", "Amazon CloudWatch"],
-    "answer": "AWS Cost Explorer"
+    "question": "Which popular battle royale game was developed by Epic Games?",
+    "options": ["PUBG", "Fortnite", "Apex Legends", "Warzone"],
+    "answer": "Fortnite"
   },
   {
     "id": 6,
-    "question": "Which service is a fully managed NoSQL database?",
-    "options": ["RDS", "Redshift", "DynamoDB", "Aurora"],
-    "answer": "DynamoDB"
+    "question": "In 'The Witcher 3', what is the name of Geralt’s horse?",
+    "options": ["Roach", "Shadowmere", "Sardin", "Spirit"],
+    "answer": "Roach"
   },
   {
     "id": 7,
-    "question": "What are the isolated data center locations within a Region called that provide redundancy?",
-    "options": ["Edge Locations", "Availability Zones", "Local Zones", "Regions"],
-    "answer": "Availability Zones"
+    "question": "Which game features a plumber trying to rescue Princess Peach?",
+    "options": ["Zelda", "Sonic", "Super Mario", "Donkey Kong"],
+    "answer": "Super Mario"
   },
   {
     "id": 8,
-    "question": "Which service is ideal for running code without provisioning or managing servers?",
-    "options": ["EC2", "Lambda", "Elastic Beanstalk", "Lightsail"],
-    "answer": "Lambda"
+    "question": "What is the main currency in League of Legends?",
+    "options": ["Valorant Points", "Gold", "RP", "Blue Essence"],
+    "answer": "Gold"
   },
   {
     "id": 9,
-    "question": "Which service is a global content delivery network (CDN) that delivers content to end-users with low latency?",
-    "options": ["Route 53", "Direct Connect", "CloudFront", "VPC"],
-    "answer": "CloudFront"
+    "question": "Which game first introduced the character Master Chief?",
+    "options": ["Doom", "Halo: Combat Evolved", "Destiny", "Call of Duty"],
+    "answer": "Halo: Combat Evolved"
   },
   {
     "id": 10,
-    "question": "Which service allows you to create and manage infrastructure as code?",
-    "options": ["CloudFormation", "Elastic Beanstalk", "Systems Manager", "OpsWorks"],
-    "answer": "CloudFormation"
+    "question": "Which country is the game 'PUBG' originally from?",
+    "options": ["USA", "South Korea", "Japan", "China"],
+    "answer": "South Korea"
   },
   {
     "id": 11,
-    "question": "Which service enables a company to manage and consolidate billing for all its AWS accounts from a central location?",
-    "options": ["AWS Control Tower", "AWS Organizations", "AWS IAM", "AWS Resource Access Manager"],
-    "answer": "AWS Organizations"
+    "question": "What type of game is 'Among Us'?",
+    "options": ["Puzzle", "Survival", "Social Deduction", "Shooter"],
+    "answer": "Social Deduction"
   },
   {
     "id": 12,
-    "question": "Which service makes it easy to set up, operate, and scale a relational database like MySQL, PostgreSQL, or Microsoft SQL Server?",
-    "options": ["DynamoDB", "Redshift", "ElastiCache", "RDS (Relational Database Service)"],
-    "answer": "RDS (Relational Database Service)"
+    "question": "In 'Valorant', which agent can heal teammates?",
+    "options": ["Jett", "Sage", "Omen", "Raze"],
+    "answer": "Sage"
   },
   {
     "id": 13,
-    "question": "Which stateless security layer controls inbound and outbound traffic at the subnet level?",
-    "options": ["Security Group", "Network ACL (NACL)", "Internet Gateway", "NAT Gateway"],
-    "answer": "Network ACL (NACL)"
+    "question": "What color is Sonic the Hedgehog?",
+    "options": ["Red", "Blue", "Green", "Yellow"],
+    "answer": "Blue"
   },
   {
     "id": 14,
-    "question": "Which service provides recommendations on cost optimization, performance, and security to help you follow AWS best practices?",
-    "options": ["AWS Inspector", "AWS Shield", "AWS Trusted Advisor", "AWS Config"],
-    "answer": "AWS Trusted Advisor"
+    "question": "Which game features the fictional city of Los Santos?",
+    "options": ["Watch Dogs 2", "GTA V", "Cyberpunk 2077", "Saints Row"],
+    "answer": "GTA V"
   },
   {
     "id": 15,
-    "question": "Which service collects and tracks metrics to monitor your AWS resources and applications?",
-    "options": ["CloudTrail", "CloudWatch", "AWS Config", "Systems Manager"],
-    "answer": "CloudWatch"
+    "question": "What is the name of the princess in the 'Legend of Zelda' series?",
+    "options": ["Zelda", "Peach", "Daisy", "Midna"],
+    "answer": "Zelda"
   },
   {
     "id": 16,
-    "question": "What is the physical device service used to transfer petabyte-scale data to AWS?",
-    "options": ["AWS DataSync", "AWS Snowball", "AWS Storage Gateway", "AWS Transfer Family"],
-    "answer": "AWS Snowball"
+    "question": "Which company owns the Call of Duty franchise?",
+    "options": ["Ubisoft", "Activision", "EA", "Rockstar"],
+    "answer": "Activision"
   },
   {
     "id": 17,
-    "question": "What is the highly available and scalable DNS (Domain Name System) web service that translates domain names to IP addresses?",
-    "options": ["CloudFront", "VPC", "Route 53", "Direct Connect"],
-    "answer": "Route 53"
+    "question": "What is the name of the main map in 'Counter-Strike: Global Offensive'?",
+    "options": ["Dust II", "Inferno", "Mirage", "Nuke"],
+    "answer": "Dust II"
   },
   {
     "id": 18,
-    "question": "Which service records API calls in your AWS account and delivers log files for auditing?",
-    "options": ["CloudWatch", "CloudTrail", "VPC Flow Logs", "AWS Config"],
-    "answer": "CloudTrail"
+    "question": "Which video game features the character Kratos?",
+    "options": ["Assassin’s Creed", "God of War", "Dark Souls", "Doom"],
+    "answer": "God of War"
   },
   {
     "id": 19,
-    "question": "What is the PaaS (Platform as a Service) offering that lets you upload code without worrying about the underlying infrastructure required to deploy a web application?",
-    "options": ["EC2", "Lambda", "Elastic Beanstalk", "CloudFormation"],
-    "answer": "Elastic Beanstalk"
+    "question": "In which game do players catch creatures called 'Pokémon'?",
+    "options": ["Digimon World", "Pokémon", "Monster Hunter", "Persona"],
+    "answer": "Pokémon"
   },
   {
     "id": 20,
-    "question": "What is the fully managed message queuing service used for storing messages between application components?",
-    "options": ["SNS (Simple Notification Service)", "SQS (Simple Queue Service)", "Amazon MQ", "Kinesis"],
-    "answer": "SQS (Simple Queue Service)"
+    "question": "Which game’s world is called Tamriel?",
+    "options": ["Elden Ring", "The Elder Scrolls", "Baldur’s Gate", "Diablo"],
+    "answer": "The Elder Scrolls"
   },
   {
     "id": 21,
-    "question": "Which service is used to establish a dedicated private network connection between the AWS Cloud and your on-premises data center?",
-    "options": ["VPN", "Direct Connect", "VPC Peering", "Transit Gateway"],
-    "answer": "Direct Connect"
+    "question": "What is the best-selling video game of all time?",
+    "options": ["GTA V", "Minecraft", "Tetris", "PUBG"],
+    "answer": "Minecraft"
   },
   {
     "id": 22,
-    "question": "What is the interactive query service that allows you to analyze data directly in S3 using standard SQL?",
-    "options": ["Redshift", "Athena", "EMR", "Glue"],
-    "answer": "Athena"
+    "question": "Which horror game features animatronic animals in a pizzeria?",
+    "options": ["Resident Evil", "Five Nights at Freddy’s", "Silent Hill", "Outlast"],
+    "answer": "Five Nights at Freddy’s"
   },
   {
     "id": 23,
-    "question": "Which service provides persistent block storage volumes for EC2 instances?",
-    "options": ["S3", "EFS", "EBS (Elastic Block Store)", "Instance Store"],
-    "answer": "EBS (Elastic Block Store)"
+    "question": "Who is the main villain in the 'Far Cry 3' game?",
+    "options": ["Vaas Montenegro", "Joseph Seed", "Pagan Min", "Anton Castillo"],
+    "answer": "Vaas Montenegro"
   },
   {
     "id": 24,
-    "question": "Which managed service provides protection against Distributed Denial of Service (DDoS) attacks?",
-    "options": ["AWS WAF", "AWS Shield", "Amazon Inspector", "AWS GuardDuty"],
-    "answer": "AWS Shield"
+    "question": "Which car racing game series is known for its realistic graphics?",
+    "options": ["Need for Speed", "Gran Turismo", "Burnout", "Forza Horizon"],
+    "answer": "Gran Turismo"
   },
   {
     "id": 25,
-    "question": "The principle of 'Least Privilege' is most associated with which AWS service?",
-    "options": ["EC2", "S3", "IAM (Identity and Access Management)", "VPC"],
-    "answer": "IAM (Identity and Access Management)"
+    "question": "Which game popularized the phrase “Finish Him!”?",
+    "options": ["Tekken", "Mortal Kombat", "Street Fighter", "Injustice"],
+    "answer": "Mortal Kombat"
   },
   {
     "id": 26,
-    "question": "Which S3 storage class is designed for long-term archiving of data that is rarely accessed but needs to be retrieved quickly when needed?",
-    "options": ["S3 Standard", "S3 Intelligent-Tiering", "S3 Glacier Instant Retrieval", "S3 Glacier Deep Archive"],
-    "answer": "S3 Glacier Deep Archive"
+    "question": "In which game do you play as an Italian assassin named Ezio?",
+    "options": ["Hitman", "Assassin’s Creed", "Dishonored", "Thief"],
+    "answer": "Assassin’s Creed"
   },
   {
     "id": 27,
-    "question": "Which service allows you to assess, audit, and evaluate the configurations of your AWS resources?",
-    "options": ["AWS Config", "CloudFormation", "CloudTrail", "Trusted Advisor"],
-    "answer": "AWS Config"
+    "question": "Which game developer created 'Overwatch'?",
+    "options": ["Valve", "Blizzard Entertainment", "Epic Games", "EA"],
+    "answer": "Blizzard Entertainment"
   },
   {
     "id": 28,
-    "question": "Which service should a company use to automatically add and remove EC2 instances based on demand fluctuations?",
-    "options": ["Elastic Load Balancing", "AWS Auto Scaling", "Amazon CloudWatch Alarms", "AWS Lambda"],
-    "answer": "AWS Auto Scaling"
+    "question": "In which game do players build settlements in space as humans or aliens?",
+    "options": ["StarCraft", "No Man’s Sky", "Mass Effect", "Destiny"],
+    "answer": "StarCraft"
   },
   {
     "id": 29,
-    "question": "Which service automatically distributes incoming application traffic across multiple targets, such as EC2 instances?",
-    "options": ["Route 53", "Elastic Load Balancing (ELB)", "Auto Scaling", "CloudFront"],
-    "answer": "Elastic Load Balancing (ELB)"
+    "question": "What is the main goal in 'Dark Souls'?",
+    "options": ["Survive and defeat bosses", "Collect stars", "Rescue a princess", "Build a base"],
+    "answer": "Survive and defeat bosses"
   },
   {
     "id": 30,
-    "question": "What is the web application firewall that helps protect your web applications from common web exploits like SQL injection?",
-    "options": ["AWS Shield", "Network ACL", "Security Group", "AWS WAF"],
-    "answer": "AWS WAF"
+    "question": "Which game features a pink, round character that can inhale enemies?",
+    "options": ["Kirby", "Yoshi", "Pikachu", "Luigi"],
+    "answer": "Kirby"
   },
   {
     "id": 31,
-    "question": "According to the AWS Shared Responsibility Model, which of the following is the customer's responsibility?",
-    "options": ["Maintenance of physical hardware", "Management of the network infrastructure", "Encryption of user data", "Security of Availability Zones"],
-    "answer": "Encryption of user data"
+    "question": "Which game’s tagline is 'Prepare to Die'?",
+    "options": ["Dark Souls", "Bloodborne", "Elden Ring", "Sekiro"],
+    "answer": "Dark Souls"
   },
   {
     "id": 32,
-    "question": "Which Redis or Memcached-compatible service is used as an in-memory data store or cache?",
-    "options": ["RDS", "DynamoDB", "ElastiCache", "Redshift"],
-    "answer": "ElastiCache"
+    "question": "In which game do players explore post-apocalyptic Boston?",
+    "options": ["Fallout 4", "Metro Exodus", "The Last of Us", "Dying Light"],
+    "answer": "Fallout 4"
   },
   {
     "id": 33,
-    "question": "An application developer wants to add push notification functionality to their application. Which service should they use?",
-    "options": ["SQS", "SES", "SNS", "Amazon MQ"],
-    "answer": "SNS"
+    "question": "What is the main playable character’s name in 'God of War: Ragnarok'?",
+    "options": ["Kratos", "Atreus", "Thor", "Odin"],
+    "answer": "Kratos"
   },
   {
     "id": 34,
-    "question": "Which component is used to allow EC2 instances in a private subnet to access the internet while preventing inbound connections from the internet?",
-    "options": ["Internet Gateway", "NAT Gateway", "Virtual Private Gateway", "Egress-Only Internet Gateway"],
-    "answer": "NAT Gateway"
+    "question": "Which indie game lets you farm, mine, and romance villagers?",
+    "options": ["Terraria", "Stardew Valley", "Harvest Moon", "My Time at Portia"],
+    "answer": "Stardew Valley"
   },
   {
     "id": 35,
-    "question": "Which storage service is most suitable when a shared file system is needed for multiple Linux-based EC2 instances?",
-    "options": ["EBS", "S3", "EFS (Elastic File System)", "Instance Store"],
-    "answer": "EFS (Elastic File System)"
+    "question": "Which game features the island of 'Yara'?",
+    "options": ["Far Cry 6", "Just Cause 3", "Tomb Raider", "Crysis"],
+    "answer": "Far Cry 6"
   },
   {
     "id": 36,
-    "question": "What is the most cost-effective EC2 purchasing option for non-urgent, interruptible workloads where cost is critical?",
-    "options": ["On-Demand Instances", "Reserved Instances", "Spot Instances", "Dedicated Hosts"],
-    "answer": "Spot Instances"
+    "question": "Which sports game series features the character Lionel Messi on its cover multiple times?",
+    "options": ["FIFA", "PES", "NBA 2K", "Madden NFL"],
+    "answer": "FIFA"
   },
   {
     "id": 37,
-    "question": "Which pillar of the AWS Well-Architected Framework focuses on a system's ability to recover from failures and dynamically meet demand?",
-    "options": ["Operational Excellence", "Security", "Reliability", "Cost Optimization"],
-    "answer": "Reliability"
+    "question": "In 'Cyberpunk 2077', who is the character voiced by Keanu Reeves?",
+    "options": ["Johnny Silverhand", "V", "Jackie Welles", "Dex"],
+    "answer": "Johnny Silverhand"
   },
   {
     "id": 38,
-    "question": "What is the hybrid cloud storage service that enables on-premises applications to seamlessly access AWS storage services?",
-    "options": ["AWS Snowball", "AWS DataSync", "AWS Storage Gateway", "AWS Direct Connect"],
-    "answer": "AWS Storage Gateway"
+    "question": "Which game franchise includes 'San Andreas' and 'Vice City'?",
+    "options": ["Mafia", "GTA", "Sleeping Dogs", "Saints Row"],
+    "answer": "GTA"
   },
   {
     "id": 39,
-    "question": "Which fully managed, petabyte-scale service is designed for data warehousing solutions?",
-    "options": ["RDS", "DynamoDB", "Amazon Redshift", "Amazon EMR"],
-    "answer": "Amazon Redshift"
+    "question": "Which character is known for saying 'It’s-a me, Mario!'?",
+    "options": ["Luigi", "Mario", "Toad", "Wario"],
+    "answer": "Mario"
   },
   {
     "id": 40,
-    "question": "Which feature should be enabled to ensure high availability for an RDS database?",
-    "options": ["Read Replicas", "Multi-AZ Deployment", "Snapshots", "Performance Insights"],
-    "answer": "Multi-AZ Deployment"
+    "question": "Which online game popularized the term 'chicken dinner' for a win?",
+    "options": ["PUBG", "Apex Legends", "Warzone", "Fortnite"],
+    "answer": "PUBG"
   },
   {
     "id": 41,
-    "question": "By which concept has AWS geographically separated its global infrastructure?",
-    "options": ["Availability Zones", "Regions", "Edge Locations", "Data Centers"],
-    "answer": "Regions"
+    "question": "Which game’s story is set in the fictional world of 'The Continent'?",
+    "options": ["The Witcher 3", "Skyrim", "Dragon Age", "Elden Ring"],
+    "answer": "The Witcher 3"
   },
   {
     "id": 42,
-    "question": "What is the network connection that allows two different VPCs to communicate with each other privately?",
-    "options": ["VPC Peering", "Direct Connect", "VPN Connection", "Transit Gateway"],
-    "answer": "VPC Peering"
+    "question": "Which fighting game features characters like Ryu and Chun-Li?",
+    "options": ["Tekken", "Mortal Kombat", "Street Fighter", "Soul Calibur"],
+    "answer": "Street Fighter"
   },
   {
     "id": 43,
-    "question": "Which service is used to provide a static public IPv4 address assigned to an EC2 instance that does not change when the instance is stopped and restarted?",
-    "options": ["Public IP", "Elastic IP", "Private IP", "ENI (Elastic Network Interface)"],
-    "answer": "Elastic IP"
+    "question": "What is the name of the main character in 'Red Dead Redemption 2'?",
+    "options": ["Arthur Morgan", "John Marston", "Dutch", "Micah Bell"],
+    "answer": "Arthur Morgan"
   },
   {
     "id": 44,
-    "question": "Which feature is used to create read-only copies of an RDS database to reduce the read load and improve performance?",
-    "options": ["Multi-AZ", "Read Replicas", "Snapshots", "Cloning"],
-    "answer": "Read Replicas"
+    "question": "Which console introduced the game 'Wii Sports'?",
+    "options": ["Wii", "GameCube", "Switch", "PlayStation 3"],
+    "answer": "Wii"
   },
   {
     "id": 45,
-    "question": "Which service automatically assesses your AWS infrastructure for potential security vulnerabilities and deviations from best practices?",
-    "options": ["Amazon GuardDuty", "Amazon Inspector", "AWS Shield", "AWS WAF"],
-    "answer": "Amazon Inspector"
+    "question": "In which game do you play as a hunter facing mechanical dinosaurs?",
+    "options": ["Horizon Zero Dawn", "Monster Hunter", "Ark", "Destiny 2"],
+    "answer": "Horizon Zero Dawn"
   },
   {
     "id": 46,
-    "question": "Through which service does AWS offer customers the ability to create their own virtually isolated private networks?",
-    "options": ["Amazon S3", "Amazon EC2", "Amazon VPC (Virtual Private Cloud)", "Amazon Route 53"],
-    "answer": "Amazon VPC (Virtual Private Cloud)"
+    "question": "Which 2022 game won Game of the Year at The Game Awards?",
+    "options": ["Elden Ring", "God of War: Ragnarok", "Hogwarts Legacy", "Baldur’s Gate 3"],
+    "answer": "Elden Ring"
   },
   {
     "id": 47,
-    "question": "Which feature should you enable to prevent accidental deletion or overwriting of objects in your S3 bucket?",
-    "options": ["Encryption", "Versioning", "Access Control Lists (ACLs)", "Lifecycle Policies"],
-    "answer": "Versioning"
+    "question": "In which game can you find the character Lara Croft?",
+    "options": ["Tomb Raider", "Uncharted", "Mirror’s Edge", "Control"],
+    "answer": "Tomb Raider"
   },
   {
     "id": 48,
-    "question": "What is the threat detection service that continuously monitors for malicious activity and unauthorized behavior in your AWS accounts?",
-    "options": ["Amazon Inspector", "AWS Shield", "Amazon GuardDuty", "AWS Security Hub"],
-    "answer": "Amazon GuardDuty"
+    "question": "Which simulation game lets you control and build cities?",
+    "options": ["SimCity", "The Sims", "Cities: Skylines", "Tropico"],
+    "answer": "Cities: Skylines"
   },
   {
     "id": 49,
-    "question": "Which service is used to move large amounts of data online from on-premises servers to AWS quickly and reliably?",
-    "options": ["AWS Snowball", "AWS DataSync", "S3 Transfer Acceleration", "AWS Transfer Family"],
-    "answer": "AWS DataSync"
+    "question": "Which game features a virus outbreak in Raccoon City?",
+    "options": ["Resident Evil", "The Last of Us", "Dying Light", "Outbreak"],
+    "answer": "Resident Evil"
   },
   {
     "id": 50,
-    "question": "What is the purchasing model that provides a significant discount on EC2 in exchange for a one or three-year commitment of a fixed usage amount?",
-    "options": ["Spot Instances", "On-Demand Instances", "Reserved Instances", "Savings Plans"],
-    "answer": "Reserved Instances"
+    "question": "Which game series is known for its phrase 'Praise the Sun'?",
+    "options": ["Dark Souls", "Elden Ring", "Bloodborne", "Sekiro"],
+    "answer": "Dark Souls"
+  },
+  {
+    "id": 51,
+    "question": "Which company developed the game 'The Last of Us'?",
+    "options": ["Rockstar Games", "Naughty Dog", "Ubisoft", "CD Projekt Red"],
+    "answer": "Naughty Dog"
+  },
+  {
+    "id": 52,
+    "question": "In 'Overwatch', what type of character is Reinhardt?",
+    "options": ["Tank", "Support", "DPS", "Sniper"],
+    "answer": "Tank"
+  },
+  {
+    "id": 53,
+    "question": "What is the name of the cube-shaped companion in 'Portal'?",
+    "options": ["Love Cube", "Companion Cube", "Helper Box", "Friend Box"],
+    "answer": "Companion Cube"
+  },
+  {
+    "id": 54,
+    "question": "Which character says 'Do a barrel roll!'?",
+    "options": ["Fox McCloud", "Mario", "Pikachu", "Samus"],
+    "answer": "Fox McCloud"
+  },
+  {
+    "id": 55,
+    "question": "What is the name of the main city in 'Cyberpunk 2077'?",
+    "options": ["Night City", "MegaTokyo", "Neo City", "Brighton"],
+    "answer": "Night City"
+  },
+  {
+    "id": 56,
+    "question": "Which franchise is known for the phrase 'Hadouken!'?",
+    "options": ["Mortal Kombat", "Street Fighter", "Tekken", "Dead or Alive"],
+    "answer": "Street Fighter"
+  },
+  {
+    "id": 57,
+    "question": "In which game do you play as a Viking named Eivor?",
+    "options": ["Assassin’s Creed Valhalla", "God of War", "The Witcher 3", "Skyrim"],
+    "answer": "Assassin’s Creed Valhalla"
+  },
+  {
+    "id": 58,
+    "question": "Which famous detective game series features a protagonist named Phoenix Wright?",
+    "options": ["L.A. Noire", "Ace Attorney", "Heavy Rain", "Murdered: Soul Suspect"],
+    "answer": "Ace Attorney"
+  },
+  {
+    "id": 59,
+    "question": "What color are the health packs in classic DOOM?",
+    "options": ["Green", "Blue", "Red", "White"],
+    "answer": "White"
+  },
+  {
+    "id": 60,
+    "question": "Which game allows players to use a portal gun to solve puzzles?",
+    "options": ["Half-Life", "Portal", "Prey", "Control"],
+    "answer": "Portal"
+  },
+  {
+    "id": 61,
+    "question": "Which 1996 game introduced the character Lara Croft?",
+    "options": ["Tomb Raider", "Uncharted", "Perfect Dark", "Half-Life"],
+    "answer": "Tomb Raider"
+  },
+  {
+    "id": 62,
+    "question": "In which horror series is the Umbrella Corporation responsible for a virus outbreak?",
+    "options": ["Resident Evil", "The Evil Within", "Dead Space", "Outlast"],
+    "answer": "Resident Evil"
+  },
+  {
+    "id": 63,
+    "question": "Which console was Nintendo’s first with motion control gameplay?",
+    "options": ["GameCube", "Wii", "Switch", "N64"],
+    "answer": "Wii"
+  },
+  {
+    "id": 64,
+    "question": "What is the highest rank in 'Valorant' competitive mode?",
+    "options": ["Radiant", "Immortal", "Diamond", "Ascendant"],
+    "answer": "Radiant"
+  },
+  {
+    "id": 65,
+    "question": "What is the main item used to catch Pokémon?",
+    "options": ["Pokéball", "Cage", "Trap", "Crystal"],
+    "answer": "Pokéball"
+  },
+  {
+    "id": 66,
+    "question": "In 'Elden Ring', what is the main objective of the player?",
+    "options": ["Become the Elden Lord", "Save a princess", "Destroy a dragon", "Find the golden sword"],
+    "answer": "Become the Elden Lord"
+  },
+  {
+    "id": 67,
+    "question": "Which console introduced the 'DualShock' controller?",
+    "options": ["PlayStation 1", "PlayStation 2", "PS3", "PSP"],
+    "answer": "PlayStation 1"
+  },
+  {
+    "id": 68,
+    "question": "In 'Genshin Impact', which element does the character Diluc control?",
+    "options": ["Fire", "Water", "Wind", "Ice"],
+    "answer": "Fire"
+  },
+  {
+    "id": 69,
+    "question": "Which game franchise features a blue shell that targets the leader?",
+    "options": ["Sonic Racing", "Need for Speed", "Mario Kart", "Crash Team Racing"],
+    "answer": "Mario Kart"
+  },
+  {
+    "id": 70,
+    "question": "Which developer created 'Half-Life' and 'Portal'?",
+    "options": ["Valve", "id Software", "Ubisoft", "Crytek"],
+    "answer": "Valve"
+  },
+  {
+    "id": 71,
+    "question": "What is the full name of the 'FPS' genre?",
+    "options": ["First-Person Shooter", "Fast Player Strategy", "Frame Play System", "Fighting Power Squad"],
+    "answer": "First-Person Shooter"
+  },
+  {
+    "id": 72,
+    "question": "In which year was the original 'Counter-Strike' released?",
+    "options": ["1999", "2001", "2004", "2007"],
+    "answer": "1999"
+  },
+  {
+    "id": 73,
+    "question": "Which game lets you become an Italian plumber racing go-karts?",
+    "options": ["Crash Team Racing", "Mario Kart", "Sonic Drift", "Trackmania"],
+    "answer": "Mario Kart"
+  },
+  {
+    "id": 74,
+    "question": "Which online game became famous for its dance emotes and building mechanics?",
+    "options": ["Fortnite", "Roblox", "PUBG", "Free Fire"],
+    "answer": "Fortnite"
+  },
+  {
+    "id": 75,
+    "question": "Which video game series is based on Greek mythology?",
+    "options": ["God of War", "Assassin’s Creed Odyssey", "Immortals Fenyx Rising", "Hades"],
+    "answer": "God of War"
+  },
+  {
+    "id": 76,
+    "question": "What is the name of the floating city in 'BioShock Infinite'?",
+    "options": ["Columbia", "Rapture", "Eden", "Haven"],
+    "answer": "Columbia"
+  },
+  {
+    "id": 77,
+    "question": "In 'Apex Legends', how many players are on a standard team?",
+    "options": ["2", "3", "4", "5"],
+    "answer": "3"
+  },
+  {
+    "id": 78,
+    "question": "Which 'Call of Duty' game introduced the 'Zombies' mode?",
+    "options": ["World at War", "Modern Warfare", "Black Ops", "Ghosts"],
+    "answer": "World at War"
+  },
+  {
+    "id": 79,
+    "question": "Which animal is the logo of the 'Metal Gear Solid' series?",
+    "options": ["Fox", "Wolf", "Snake", "Eagle"],
+    "answer": "Fox"
+  },
+  {
+    "id": 80,
+    "question": "What kind of creature is Pikachu?",
+    "options": ["Cat", "Mouse", "Rabbit", "Fox"],
+    "answer": "Mouse"
+  },
+  {
+    "id": 81,
+    "question": "Which game features a dystopian London controlled by private security?",
+    "options": ["Watch Dogs: Legion", "Cyberpunk 2077", "Deus Ex", "Control"],
+    "answer": "Watch Dogs: Legion"
+  },
+  {
+    "id": 82,
+    "question": "Which character is known for shouting 'Get over here!'?",
+    "options": ["Ryu", "Scorpion", "Sub-Zero", "Liu Kang"],
+    "answer": "Scorpion"
+  },
+  {
+    "id": 83,
+    "question": "Which handheld console was released by Sony in 2004?",
+    "options": ["PS Vita", "PSP", "Game Boy Advance", "DS"],
+    "answer": "PSP"
+  },
+  {
+    "id": 84,
+    "question": "Which post-apocalyptic game features the Vault Boy mascot?",
+    "options": ["Fallout", "Metro Exodus", "The Last of Us", "Wasteland"],
+    "answer": "Fallout"
+  },
+  {
+    "id": 85,
+    "question": "Which franchise has the main antagonist named Sephiroth?",
+    "options": ["Final Fantasy", "Kingdom Hearts", "Chrono Trigger", "Dragon Quest"],
+    "answer": "Final Fantasy"
+  },
+  {
+    "id": 86,
+    "question": "Which battle royale game introduced 'Legends' as unique characters?",
+    "options": ["Apex Legends", "PUBG", "Warzone", "Fortnite"],
+    "answer": "Apex Legends"
+  },
+  {
+    "id": 87,
+    "question": "What is the name of the main character in 'Metal Gear Solid'?",
+    "options": ["Solid Snake", "Raiden", "Big Boss", "Liquid Snake"],
+    "answer": "Solid Snake"
+  },
+  {
+    "id": 88,
+    "question": "Which console introduced 'The Legend of Zelda: Breath of the Wild'?",
+    "options": ["Switch", "Wii U", "3DS", "GameCube"],
+    "answer": "Switch"
+  },
+  {
+    "id": 89,
+    "question": "In 'Minecraft', which dimension features the Ender Dragon?",
+    "options": ["The End", "Nether", "Overworld", "Skylands"],
+    "answer": "The End"
+  },
+  {
+    "id": 90,
+    "question": "Which game popularized the phrase 'Arrow to the knee'?",
+    "options": ["Skyrim", "Oblivion", "Witcher 3", "Dragon Age"],
+    "answer": "Skyrim"
+  },
+  {
+    "id": 91,
+    "question": "What is the default dance from 'Fortnite' often called?",
+    "options": ["Default Dance", "Boogie Down", "Fresh", "Orange Justice"],
+    "answer": "Default Dance"
+  },
+  {
+    "id": 92,
+    "question": "Which Nintendo character uses a vacuum cleaner to catch ghosts?",
+    "options": ["Luigi", "Mario", "Toad", "Kirby"],
+    "answer": "Luigi"
+  },
+  {
+    "id": 93,
+    "question": "In 'Animal Crossing', who is the raccoon who runs the shop?",
+    "options": ["Tom Nook", "Timmy", "Tommy", "K.K. Slider"],
+    "answer": "Tom Nook"
+  },
+  {
+    "id": 94,
+    "question": "Which franchise includes the game 'Odyssey' featuring a ship named the Adrestia?",
+    "options": ["Assassin’s Creed", "God of War", "The Witcher", "Prince of Persia"],
+    "answer": "Assassin’s Creed"
+  },
+  {
+    "id": 95,
+    "question": "What is the name of the virus in 'The Last of Us'?",
+    "options": ["Cordyceps", "Umbrella Virus", "T-Virus", "Crimson Plague"],
+    "answer": "Cordyceps"
+  },
+  {
+    "id": 96,
+    "question": "Which game allows you to control different civilizations and advance through ages?",
+    "options": ["Age of Empires", "Civilization", "Anno", "Rise of Nations"],
+    "answer": "Age of Empires"
+  },
+  {
+    "id": 97,
+    "question": "What is the name of the studio behind 'Baldur’s Gate 3'?",
+    "options": ["Larian Studios", "Obsidian", "CD Projekt Red", "BioWare"],
+    "answer": "Larian Studios"
+  },
+  {
+    "id": 98,
+    "question": "Which 2023 game won Game of the Year at The Game Awards?",
+    "options": ["Baldur’s Gate 3", "Alan Wake 2", "Spider-Man 2", "Starfield"],
+    "answer": "Baldur’s Gate 3"
+  },
+  {
+    "id": 99,
+    "question": "Which horror game features a town covered in fog and psychological terror?",
+    "options": ["Silent Hill", "Resident Evil", "Outlast", "Dead by Daylight"],
+    "answer": "Silent Hill"
+  },
+  {
+    "id": 100,
+    "question": "Which iconic 90s game introduced 'First-Person Shooter' gameplay to the masses?",
+    "options": ["DOOM", "Wolfenstein 3D", "Quake", "GoldenEye 007"],
+    "answer": "DOOM"
   }
 ]

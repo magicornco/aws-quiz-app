@@ -7,6 +7,7 @@ import LeaderboardPage from './components/LeaderboardPage';
 import QuizReview from './components/QuizReview';
 import AdminPanel from './components/AdminPanel';
 import { gameAPI } from './services/api';
+import { playCorrectAnswerSound, playWrongAnswerSound } from './utils/soundUtils';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -166,6 +167,15 @@ function App() {
       setError(null);
       
       const response = await gameAPI.submitAnswer(gameData.gameId, answer);
+      
+      // Play sound effect based on answer correctness
+      if (response.correct !== undefined) {
+        if (response.correct) {
+          playCorrectAnswerSound();
+        } else {
+          playWrongAnswerSound();
+        }
+      }
       
       if (response.gameCompleted) {
         setResult({

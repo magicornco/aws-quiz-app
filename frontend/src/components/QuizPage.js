@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import magicornLogo from '../assets/magicorn-logo.png';
+import { playGameStartSound, playCorrectAnswerSound, playWrongAnswerSound, playTimeUpSound } from '../utils/soundUtils';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -205,9 +206,13 @@ function QuizPage({ gameData, onAnswer, onTimeUp }) {
   }
 
   useEffect(() => {
+    // Play game start sound when quiz begins
+    playGameStartSound();
+    
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
+          playTimeUpSound();
           onTimeUp();
           return 0;
         }
