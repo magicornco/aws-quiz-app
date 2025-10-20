@@ -646,26 +646,47 @@ const LogosRow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  max-width: 1400px;
+  gap: 12px;
+  flex-wrap: nowrap;
+  max-width: 100%;
   margin: 0 auto;
+  overflow-x: auto;
+  padding: 10px 0;
+  
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
   
   @media (max-width: 1024px) and (orientation: landscape) {
     gap: 8px;
-    max-width: 100%;
   }
   
   @media (max-width: 1200px) {
-    gap: 12px;
-  }
-  
-  @media (max-width: 768px) {
     gap: 10px;
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     gap: 8px;
+    padding: 8px 0;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 6px;
+    padding: 5px 0;
   }
 `;
 
@@ -677,28 +698,29 @@ const PartnerLogo = styled.div`
   padding: 5px;
   text-align: center;
   transition: all 0.3s ease;
-  width: 220px;
-  height: 240px;
+  width: 180px;
+  height: 200px;
+  flex-shrink: 0;
   
   @media (max-width: 1024px) and (orientation: landscape) {
-    width: 140px;
-    height: 160px;
+    width: 120px;
+    height: 140px;
     padding: 3px;
   }
   
   @media (max-width: 1200px) {
-    width: 200px;
-    height: 220px;
+    width: 160px;
+    height: 180px;
   }
   
   @media (max-width: 768px) {
-    width: 180px;
-    height: 200px;
+    width: 100px;
+    height: 120px;
   }
   
   @media (max-width: 480px) {
-    width: 250px;
-    height: 270px;
+    width: 80px;
+    height: 100px;
   }
   
   &:hover {
@@ -707,26 +729,26 @@ const PartnerLogo = styled.div`
 `;
 
 const PartnerLogoImage = styled.img`
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   object-fit: contain;
   transition: all 0.3s ease;
   margin-bottom: 8px;
   background: transparent;
   
   @media (max-width: 1200px) {
-    height: 140px;
-    width: 140px;
+    height: 110px;
+    width: 110px;
   }
   
   @media (max-width: 768px) {
-    height: 120px;
-    width: 120px;
+    height: 80px;
+    width: 80px;
   }
   
   @media (max-width: 480px) {
-    height: 100px;
-    width: 100px;
+    height: 60px;
+    width: 60px;
   }
   
   &:hover {
