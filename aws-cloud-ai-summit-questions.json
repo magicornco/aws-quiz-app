@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "question": "What does AWS stand for?",
+    "options": ["Amazon Web Services", "Amazon Workflow System", "Advanced Web Solutions", "Amazon Workspace Services"],
+    "answer": "Amazon Web Services"
+  },
+  {
+    "id": 2,
+    "question": "Which AWS service provides serverless compute?",
+    "options": ["EC2", "Lambda", "ECS", "Elastic Beanstalk"],
+    "answer": "Lambda"
+  },
+  {
+    "id": 3,
+    "question": "What is the maximum execution time for a Lambda function?",
+    "options": ["5 minutes", "15 minutes", "30 minutes", "60 minutes"],
+    "answer": "15 minutes"
+  },
+  {
+    "id": 4,
+    "question": "Which AWS service is used for object storage?",
+    "options": ["EBS", "EFS", "S3", "Glacier"],
+    "answer": "S3"
+  },
+  {
+    "id": 5,
+    "question": "What is the default storage class in S3?",
+    "options": ["STANDARD", "STANDARD_IA", "ONEZONE_IA", "GLACIER"],
+    "answer": "STANDARD"
+  },
+  {
+    "id": 6,
+    "question": "Which AWS service provides managed relational databases?",
+    "options": ["DynamoDB", "RDS", "Redshift", "ElastiCache"],
+    "answer": "RDS"
+  },
+  {
+    "id": 7,
+    "question": "What is Amazon SageMaker primarily used for?",
+    "options": ["Data warehousing", "Machine Learning", "Content delivery", "Email service"],
+    "answer": "Machine Learning"
+  },
+  {
+    "id": 8,
+    "question": "Which AWS service provides image and video analysis using AI?",
+    "options": ["Comprehend", "Rekognition", "Polly", "Transcribe"],
+    "answer": "Rekognition"
+  },
+  {
+    "id": 9,
+    "question": "What is the maximum size of an S3 object?",
+    "options": ["5 GB", "5 TB", "500 GB", "Unlimited"],
+    "answer": "5 TB"
+  },
+  {
+    "id": 10,
+    "question": "Which AWS service provides text-to-speech capabilities?",
+    "options": ["Transcribe", "Polly", "Comprehend", "Lex"],
+    "answer": "Polly"
+  },
+  {
+    "id": 11,
+    "question": "What is AWS CloudFront?",
+    "options": ["A database service", "A content delivery network", "A compute service", "A storage service"],
+    "answer": "A content delivery network"
+  },
+  {
+    "id": 12,
+    "question": "Which AWS service is used for identity and access management?",
+    "options": ["CloudWatch", "IAM", "KMS", "Secrets Manager"],
+    "answer": "IAM"
+  },
+  {
+    "id": 13,
+    "question": "What is the default region for AWS?",
+    "options": ["us-east-1", "us-west-2", "eu-west-1", "ap-southeast-1"],
+    "answer": "us-east-1"
+  },
+  {
+    "id": 14,
+    "question": "Which AWS service provides speech-to-text conversion?",
+    "options": ["Polly", "Transcribe", "Comprehend", "Lex"],
+    "answer": "Transcribe"
+  },
+  {
+    "id": 15,
+    "question": "What is AWS VPC?",
+    "options": ["Virtual Private Cloud", "Virtual Public Cloud", "Virtual Processing Center", "Virtual Private Connection"],
+    "answer": "Virtual Private Cloud"
+  },
+  {
+    "id": 16,
+    "question": "Which AWS service is used for container orchestration?",
+    "options": ["ECS", "EKS", "Fargate", "All of the above"],
+    "answer": "All of the above"
+  },
+  {
+    "id": 17,
+    "question": "What is Amazon Comprehend used for?",
+    "options": ["Image recognition", "Natural language processing", "Video analysis", "Speech synthesis"],
+    "answer": "Natural language processing"
+  },
+  {
+    "id": 18,
+    "question": "Which AWS service provides managed Kubernetes?",
+    "options": ["ECS", "EKS", "Fargate", "Lambda"],
+    "answer": "EKS"
+  },
+  {
+    "id": 19,
+    "question": "What is the maximum number of S3 buckets per AWS account?",
+    "options": ["100", "1000", "Unlimited", "500"],
+    "answer": "100"
+  },
+  {
+    "id": 20,
+    "question": "Which AWS service is used for real-time data streaming?",
+    "options": ["Kinesis", "SQS", "SNS", "EventBridge"],
+    "answer": "Kinesis"
+  },
+  {
+    "id": 21,
+    "question": "What is AWS Step Functions used for?",
+    "options": ["Serverless workflows", "Data processing", "Content delivery", "Database management"],
+    "answer": "Serverless workflows"
+  },
+  {
+    "id": 22,
+    "question": "Which AWS service provides managed NoSQL database?",
+    "options": ["RDS", "DynamoDB", "Redshift", "ElastiCache"],
+    "answer": "DynamoDB"
+  },
+  {
+    "id": 23,
+    "question": "What is Amazon Bedrock?",
+    "options": ["A foundation model service", "A storage service", "A compute service", "A networking service"],
+    "answer": "A foundation model service"
+  },
+  {
+    "id": 24,
+    "question": "Which AWS service is used for infrastructure as code?",
+    "options": ["CloudFormation", "Terraform", "Ansible", "CloudWatch"],
+    "answer": "CloudFormation"
+  },
+  {
+    "id": 25,
+    "question": "What is the maximum number of Lambda functions per region?",
+    "options": ["1000", "Unlimited", "10000", "5000"],
+    "answer": "Unlimited"
+  },
+  {
+    "id": 26,
+    "question": "Which AWS service provides managed message queuing?",
+    "options": ["SNS", "SQS", "EventBridge", "Kinesis"],
+    "answer": "SQS"
+  },
+  {
+    "id": 27,
+    "question": "What is Amazon CodeWhisperer?",
+    "options": ["A code review service", "An AI coding companion", "A deployment tool", "A monitoring service"],
+    "answer": "An AI coding companion"
+  },
+  {
+    "id": 28,
+    "question": "Which AWS service provides serverless data warehousing?",
+    "options": ["Redshift", "Athena", "Glue", "EMR"],
+    "answer": "Athena"
+  },
+  {
+    "id": 29,
+    "question": "What is AWS API Gateway used for?",
+    "options": ["Database management", "API management", "File storage", "Email service"],
+    "answer": "API management"
+  },
+  {
+    "id": 30,
+    "question": "Which AWS service provides managed Redis?",
+    "options": ["ElastiCache", "RDS", "DynamoDB", "Redshift"],
+    "answer": "ElastiCache"
+  },
+  {
+    "id": 31,
+    "question": "What is Amazon Q?",
+    "options": ["A quantum computing service", "An AI assistant for business", "A queue service", "A query service"],
+    "answer": "An AI assistant for business"
+  },
+  {
+    "id": 32,
+    "question": "Which AWS service provides DDoS protection?",
+    "options": ["WAF", "Shield", "GuardDuty", "Security Hub"],
+    "answer": "Shield"
+  },
+  {
+    "id": 33,
+    "question": "What is the maximum size of a Lambda deployment package?",
+    "options": ["50 MB", "250 MB", "500 MB", "1 GB"],
+    "answer": "250 MB"
+  },
+  {
+    "id": 34,
+    "question": "Which AWS service provides managed file storage?",
+    "options": ["S3", "EBS", "EFS", "FSx"],
+    "answer": "EFS"
+  },
+  {
+    "id": 35,
+    "question": "What is Amazon Bedrock used for?",
+    "options": ["Building generative AI applications", "Data warehousing", "Content delivery", "Email service"],
+    "answer": "Building generative AI applications"
+  },
+  {
+    "id": 36,
+    "question": "Which AWS service provides managed PostgreSQL?",
+    "options": ["RDS", "DynamoDB", "Redshift", "DocumentDB"],
+    "answer": "RDS"
+  },
+  {
+    "id": 37,
+    "question": "What is AWS CloudWatch used for?",
+    "options": ["Monitoring and observability", "Content delivery", "Database management", "Email service"],
+    "answer": "Monitoring and observability"
+  },
+  {
+    "id": 38,
+    "question": "Which AWS service provides serverless ETL?",
+    "options": ["Glue", "EMR", "Athena", "Redshift"],
+    "answer": "Glue"
+  },
+  {
+    "id": 39,
+    "question": "What is Amazon Lex used for?",
+    "options": ["Building conversational interfaces", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Building conversational interfaces"
+  },
+  {
+    "id": 40,
+    "question": "Which AWS service provides managed MySQL?",
+    "options": ["RDS", "DynamoDB", "DocumentDB", "Neptune"],
+    "answer": "RDS"
+  },
+  {
+    "id": 41,
+    "question": "What is the maximum number of concurrent Lambda executions?",
+    "options": ["1000", "Unlimited", "10000", "5000"],
+    "answer": "Unlimited"
+  },
+  {
+    "id": 42,
+    "question": "Which AWS service provides managed document database?",
+    "options": ["DynamoDB", "DocumentDB", "Neptune", "RDS"],
+    "answer": "DocumentDB"
+  },
+  {
+    "id": 43,
+    "question": "What is Amazon Q Developer?",
+    "options": ["A quantum computing service", "An AI assistant for developers", "A queue service", "A query service"],
+    "answer": "An AI assistant for developers"
+  },
+  {
+    "id": 44,
+    "question": "Which AWS service provides managed graph database?",
+    "options": ["DynamoDB", "Neptune", "DocumentDB", "RDS"],
+    "answer": "Neptune"
+  },
+  {
+    "id": 45,
+    "question": "What is AWS Fargate?",
+    "options": ["A serverless compute engine for containers", "A storage service", "A database service", "A networking service"],
+    "answer": "A serverless compute engine for containers"
+  },
+  {
+    "id": 46,
+    "question": "Which AWS service provides managed email service?",
+    "options": ["SES", "SNS", "SQS", "EventBridge"],
+    "answer": "SES"
+  },
+  {
+    "id": 47,
+    "question": "What is Amazon Textract used for?",
+    "options": ["Text analysis", "Document text extraction", "Speech synthesis", "Image recognition"],
+    "answer": "Document text extraction"
+  },
+  {
+    "id": 48,
+    "question": "Which AWS service provides managed search?",
+    "options": ["CloudSearch", "Elasticsearch", "OpenSearch", "All of the above"],
+    "answer": "OpenSearch"
+  },
+  {
+    "id": 49,
+    "question": "What is AWS Systems Manager used for?",
+    "options": ["Operations management", "Content delivery", "Database management", "Email service"],
+    "answer": "Operations management"
+  },
+  {
+    "id": 50,
+    "question": "Which AWS service provides managed Apache Spark?",
+    "options": ["EMR", "Glue", "Athena", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 51,
+    "question": "What is Amazon Connect?",
+    "options": ["A cloud contact center", "A database service", "A compute service", "A storage service"],
+    "answer": "A cloud contact center"
+  },
+  {
+    "id": 52,
+    "question": "Which AWS service provides managed Apache Kafka?",
+    "options": ["Kinesis", "MSK", "SQS", "EventBridge"],
+    "answer": "MSK"
+  },
+  {
+    "id": 53,
+    "question": "What is AWS X-Ray used for?",
+    "options": ["Distributed tracing", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Distributed tracing"
+  },
+  {
+    "id": 54,
+    "question": "Which AWS service provides managed Windows file system?",
+    "options": ["EFS", "FSx", "EBS", "S3"],
+    "answer": "FSx"
+  },
+  {
+    "id": 55,
+    "question": "What is Amazon Forecast used for?",
+    "options": ["Time series forecasting", "Image recognition", "Speech synthesis", "Content delivery"],
+    "answer": "Time series forecasting"
+  },
+  {
+    "id": 56,
+    "question": "Which AWS service provides managed Active Directory?",
+    "options": ["IAM", "Directory Service", "Cognito", "SSO"],
+    "answer": "Directory Service"
+  },
+  {
+    "id": 57,
+    "question": "What is AWS Config used for?",
+    "options": ["Configuration management and compliance", "Content delivery", "Database management", "Email service"],
+    "answer": "Configuration management and compliance"
+  },
+  {
+    "id": 58,
+    "question": "Which AWS service provides managed blockchain?",
+    "options": ["Blockchain", "Managed Blockchain", "Quantum Ledger Database", "All of the above"],
+    "answer": "Managed Blockchain"
+  },
+  {
+    "id": 59,
+    "question": "What is Amazon Personalize used for?",
+    "options": ["Building recommendation systems", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Building recommendation systems"
+  },
+  {
+    "id": 60,
+    "question": "Which AWS service provides managed time series database?",
+    "options": ["Timestream", "DynamoDB", "RDS", "Redshift"],
+    "answer": "Timestream"
+  },
+  {
+    "id": 61,
+    "question": "What is AWS AppSync?",
+    "options": ["A GraphQL API service", "A database service", "A compute service", "A storage service"],
+    "answer": "A GraphQL API service"
+  },
+  {
+    "id": 62,
+    "question": "Which AWS service provides managed Apache Airflow?",
+    "options": ["MWAA", "Glue", "Step Functions", "ECS"],
+    "answer": "MWAA"
+  },
+  {
+    "id": 63,
+    "question": "What is Amazon Kendra?",
+    "options": ["An intelligent search service", "A database service", "A compute service", "A storage service"],
+    "answer": "An intelligent search service"
+  },
+  {
+    "id": 64,
+    "question": "Which AWS service provides managed Apache Flink?",
+    "options": ["Kinesis Analytics", "EMR", "Glue", "Athena"],
+    "answer": "Kinesis Analytics"
+  },
+  {
+    "id": 65,
+    "question": "What is AWS Amplify used for?",
+    "options": ["Building full-stack applications", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Building full-stack applications"
+  },
+  {
+    "id": 66,
+    "question": "Which AWS service provides managed Apache Cassandra?",
+    "options": ["Keyspaces", "DynamoDB", "DocumentDB", "Neptune"],
+    "answer": "Keyspaces"
+  },
+  {
+    "id": 67,
+    "question": "What is Amazon Lookout for Vision?",
+    "options": ["Computer vision for quality control", "Image recognition", "Speech synthesis", "Content delivery"],
+    "answer": "Computer vision for quality control"
+  },
+  {
+    "id": 68,
+    "question": "Which AWS service provides managed Apache HBase?",
+    "options": ["EMR", "DynamoDB", "DocumentDB", "Neptune"],
+    "answer": "EMR"
+  },
+  {
+    "id": 69,
+    "question": "What is AWS App Runner?",
+    "options": ["A fully managed container service", "A storage service", "A database service", "A networking service"],
+    "answer": "A fully managed container service"
+  },
+  {
+    "id": 70,
+    "question": "Which AWS service provides managed Apache Presto?",
+    "options": ["Athena", "EMR", "Glue", "Redshift"],
+    "answer": "Athena"
+  },
+  {
+    "id": 71,
+    "question": "What is Amazon Lookout for Equipment?",
+    "options": ["Predictive maintenance for industrial equipment", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Predictive maintenance for industrial equipment"
+  },
+  {
+    "id": 72,
+    "question": "Which AWS service provides managed Apache Zeppelin?",
+    "options": ["EMR", "SageMaker", "Athena", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 73,
+    "question": "What is AWS Proton?",
+    "options": ["A service for container and serverless deployments", "A storage service", "A database service", "A networking service"],
+    "answer": "A service for container and serverless deployments"
+  },
+  {
+    "id": 74,
+    "question": "Which AWS service provides managed Apache Superset?",
+    "options": ["QuickSight", "Athena", "Redshift", "EMR"],
+    "answer": "QuickSight"
+  },
+  {
+    "id": 75,
+    "question": "What is Amazon Lookout for Metrics?",
+    "options": ["Anomaly detection for metrics", "Image recognition", "Speech synthesis", "Content delivery"],
+    "answer": "Anomaly detection for metrics"
+  },
+  {
+    "id": 76,
+    "question": "Which AWS service provides managed Apache Hive?",
+    "options": ["EMR", "Athena", "Glue", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 77,
+    "question": "What is AWS Control Tower?",
+    "options": ["Multi-account governance", "Content delivery", "Database management", "Email service"],
+    "answer": "Multi-account governance"
+  },
+  {
+    "id": 78,
+    "question": "Which AWS service provides managed Apache Pig?",
+    "options": ["EMR", "Glue", "Athena", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 79,
+    "question": "What is Amazon Augmented AI (A2I)?",
+    "options": ["Human review of ML predictions", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Human review of ML predictions"
+  },
+  {
+    "id": 80,
+    "question": "Which AWS service provides managed Apache Mahout?",
+    "options": ["SageMaker", "EMR", "Athena", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 81,
+    "question": "What is AWS IoT Core?",
+    "options": ["Managed cloud service for IoT devices", "A storage service", "A database service", "A networking service"],
+    "answer": "Managed cloud service for IoT devices"
+  },
+  {
+    "id": 82,
+    "question": "Which AWS service provides managed Apache Storm?",
+    "options": ["Kinesis", "EMR", "Glue", "Athena"],
+    "answer": "EMR"
+  },
+  {
+    "id": 83,
+    "question": "What is Amazon Fraud Detector?",
+    "options": ["Fraud detection using ML", "Image recognition", "Speech synthesis", "Content delivery"],
+    "answer": "Fraud detection using ML"
+  },
+  {
+    "id": 84,
+    "question": "Which AWS service provides managed Apache Giraph?",
+    "options": ["EMR", "Neptune", "DocumentDB", "DynamoDB"],
+    "answer": "EMR"
+  },
+  {
+    "id": 85,
+    "question": "What is AWS Ground Station?",
+    "options": ["Satellite data processing", "Content delivery", "Database management", "Email service"],
+    "answer": "Satellite data processing"
+  },
+  {
+    "id": 86,
+    "question": "Which AWS service provides managed Apache Oozie?",
+    "options": ["EMR", "Step Functions", "Glue", "Athena"],
+    "answer": "EMR"
+  },
+  {
+    "id": 87,
+    "question": "What is Amazon CodeGuru?",
+    "options": ["ML-powered code review and profiling", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "ML-powered code review and profiling"
+  },
+  {
+    "id": 88,
+    "question": "Which AWS service provides managed Apache Sqoop?",
+    "options": ["EMR", "Glue", "DMS", "Athena"],
+    "answer": "EMR"
+  },
+  {
+    "id": 89,
+    "question": "What is AWS WAF?",
+    "options": ["Web Application Firewall", "A storage service", "A database service", "A compute service"],
+    "answer": "Web Application Firewall"
+  },
+  {
+    "id": 90,
+    "question": "Which AWS service provides managed Apache Flume?",
+    "options": ["Kinesis", "EMR", "Glue", "Athena"],
+    "answer": "EMR"
+  },
+  {
+    "id": 91,
+    "question": "What is Amazon Macie?",
+    "options": ["Data security and privacy service", "Image recognition", "Speech synthesis", "Content delivery"],
+    "answer": "Data security and privacy service"
+  },
+  {
+    "id": 92,
+    "question": "Which AWS service provides managed Apache Ranger?",
+    "options": ["EMR", "IAM", "KMS", "Secrets Manager"],
+    "answer": "EMR"
+  },
+  {
+    "id": 93,
+    "question": "What is AWS Backup?",
+    "options": ["Centralized backup service", "Content delivery", "Database management", "Email service"],
+    "answer": "Centralized backup service"
+  },
+  {
+    "id": 94,
+    "question": "Which AWS service provides managed Apache Knox?",
+    "options": ["EMR", "API Gateway", "WAF", "Shield"],
+    "answer": "EMR"
+  },
+  {
+    "id": 95,
+    "question": "What is Amazon Detective?",
+    "options": ["Security investigation service", "Image recognition", "Data warehousing", "Content delivery"],
+    "answer": "Security investigation service"
+  },
+  {
+    "id": 96,
+    "question": "Which AWS service provides managed Apache Livy?",
+    "options": ["EMR", "SageMaker", "Athena", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 97,
+    "question": "What is AWS Artifact?",
+    "options": ["Compliance reports and agreements", "Content delivery", "Database management", "Email service"],
+    "answer": "Compliance reports and agreements"
+  },
+  {
+    "id": 98,
+    "question": "Which AWS service provides managed Apache Tez?",
+    "options": ["EMR", "Athena", "Glue", "Redshift"],
+    "answer": "EMR"
+  },
+  {
+    "id": 99,
+    "question": "What is Amazon GuardDuty?",
+    "options": ["Threat detection service", "Image recognition", "Speech synthesis", "Content delivery"],
+    "answer": "Threat detection service"
+  },
+  {
+    "id": 100,
+    "question": "Which AWS service provides managed Apache YARN?",
+    "options": ["EMR", "ECS", "EKS", "Fargate"],
+    "answer": "EMR"
+  }
+]

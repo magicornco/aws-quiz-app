@@ -4,11 +4,32 @@ require('dotenv').config();
 
 class Database {
   constructor() {
+    // Validate AWS credentials
+    const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+    const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+    const region = process.env.AWS_REGION || 'us-east-1';
+    
+    if (!accessKeyId || !secretAccessKey) {
+      console.error('❌ AWS Credentials Missing!');
+      console.error('Required environment variables:');
+      console.error('  - AWS_ACCESS_KEY_ID');
+      console.error('  - AWS_SECRET_ACCESS_KEY');
+      console.error('  - AWS_REGION (optional, default: us-east-1)');
+      throw new Error('AWS credentials are required. Please set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables.');
+    }
+    
+    // Validate credentials format
+    if (accessKeyId.trim() === '' || secretAccessKey.trim() === '') {
+      throw new Error('AWS credentials cannot be empty. Please provide valid AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.');
+    }
+    
+    console.log(`✅ AWS Credentials found for region: ${region}`);
+    
     this.client = new DynamoDBClient({
-      region: process.env.AWS_REGION || 'us-east-1',
+      region: region,
       credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        accessKeyId: accessKeyId.trim(),
+        secretAccessKey: secretAccessKey.trim(),
       },
     });
     
@@ -19,6 +40,8 @@ class Database {
     this.QUESTIONS_TABLE = process.env.DYNAMODB_QUESTIONS_TABLE || 'aws-quiz-questions';
     this.GAME_SESSIONS_TABLE = process.env.DYNAMODB_GAME_SESSIONS_TABLE || 'aws-quiz-game-sessions';
     this.LEADERBOARD_TABLE = process.env.DYNAMODB_LEADERBOARD_TABLE || 'aws-quiz-leaderboard';
+    
+    console.log(`📊 DynamoDB Tables: ${this.QUESTIONS_TABLE}, ${this.GAME_SESSIONS_TABLE}, ${this.LEADERBOARD_TABLE}`);
   }
 
   async connect() {
