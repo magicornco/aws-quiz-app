@@ -31,6 +31,9 @@ services:
       DYNAMODB_QUESTIONS_TABLE: ${DYNAMODB_QUESTIONS_TABLE:-aws-quiz-questions}
       DYNAMODB_GAME_SESSIONS_TABLE: ${DYNAMODB_GAME_SESSIONS_TABLE:-aws-quiz-game-sessions}
       DYNAMODB_LEADERBOARD_TABLE: ${DYNAMODB_LEADERBOARD_TABLE:-aws-quiz-leaderboard}
+      # Admin Panel Credentials
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
     volumes:
       - ./backend/data:/app/data
       - ./backend/.env:/app/.env:ro

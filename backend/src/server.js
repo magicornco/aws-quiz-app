@@ -45,9 +45,18 @@ async function initializeDatabase() {
   }
 }
 
-// Admin credentials
-const ADMIN_USERNAME = 'magicorn';
-const ADMIN_PASSWORD = 'magicorn2025';
+// Admin credentials from environment variables
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+
+// Validate admin credentials
+if (!ADMIN_USERNAME || !ADMIN_PASSWORD) {
+  console.error('❌ Admin credentials are required!');
+  console.error('Please set ADMIN_USERNAME and ADMIN_PASSWORD environment variables.');
+  process.exit(1);
+}
+
+console.log(`✅ Admin credentials configured for user: ${ADMIN_USERNAME}`);
 
 // Admin authentication middleware
 const authenticateAdmin = (req, res, next) => {

@@ -616,23 +616,33 @@ const AdminPanel = () => {
     e.preventDefault();
     setLoading(true);
     
+    if (!username.trim() || !password.trim()) {
+      showMessage('Please enter both username and password', false);
+      setLoading(false);
+      return;
+    }
+    
     try {
       const response = await fetch(`${getApiUrl()}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: username.trim(), password: password.trim() }),
       });
+
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         setIsLoggedIn(true);
-        saveSession(username, password);
+        saveSession(username.trim(), password.trim());
         showMessage('Login successful!', true);
       } else {
-        showMessage('Invalid credentials', false);
+        const errorMsg = data.error || data.message || 'Invalid credentials';
+        showMessage(errorMsg, false);
+        console.error('Login failed:', errorMsg);
       }
     } catch (error) {
       console.error('Login error:', error);
-      showMessage('Login failed', false);
+      showMessage(`Login failed: ${error.message || 'Network error'}`, false);
     } finally {
       setLoading(false);
     }
