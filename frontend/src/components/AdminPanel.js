@@ -507,9 +507,9 @@ const Message = styled.div`
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
-  background: ${props => props.success ? 'rgba(39, 174, 96, 0.2)' : 'rgba(231, 76, 60, 0.2)'};
-  color: ${props => props.success ? '#27ae60' : '#e74c3c'};
-  border: 1px solid ${props => props.success ? '#27ae60' : '#e74c3c'};
+  background: ${props => props.$success ? 'rgba(39, 174, 96, 0.2)' : 'rgba(231, 76, 60, 0.2)'};
+  color: ${props => props.$success ? '#27ae60' : '#e74c3c'};
+  border: 1px solid ${props => props.$success ? '#27ae60' : '#e74c3c'};
 `;
 
 const AdminPanel = () => {
@@ -521,7 +521,7 @@ const AdminPanel = () => {
   const [questions, setQuestions] = useState([]);
   const [users, setUsers] = useState([]);
   const [jsonData, setJsonData] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(null);
   const [showAddQuestion, setShowAddQuestion] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [newQuestion, setNewQuestion] = useState({
@@ -602,7 +602,7 @@ const AdminPanel = () => {
 
   const showMessage = (text, success = true) => {
     setMessage({ text, success });
-    setTimeout(() => setMessage(''), 5000);
+    setTimeout(() => setMessage(null), 5000);
   };
 
   const getApiUrl = () => {
@@ -720,7 +720,39 @@ const AdminPanel = () => {
 
   const loadJsonQuestions = async () => {
     try {
-      const questionsData = JSON.parse(jsonData);
+      if (!jsonData.trim()) {
+        showMessage('Please paste JSON data first', false);
+        return;
+      }
+
+      let questionsData;
+      try {
+        questionsData = JSON.parse(jsonData);
+      } catch (parseError) {
+        showMessage('Invalid JSON format. Please check your JSON syntax.', false);
+        console.error('JSON parse error:', parseError);
+        return;
+      }
+
+      if (!Array.isArray(questionsData)) {
+        showMessage('JSON must be an array of questions', false);
+        return;
+      }
+
+      if (questionsData.length === 0) {
+        showMessage('JSON array is empty', false);
+        return;
+      }
+
+      // Validate question structure
+      const invalidQuestions = questionsData.filter(q => 
+        !q.question || !q.options || !q.answer || !Array.isArray(q.options) || q.options.length !== 4
+      );
+
+      if (invalidQuestions.length > 0) {
+        showMessage(`${invalidQuestions.length} questions have invalid format. Each question needs: question, options (array of 4), and answer.`, false);
+        return;
+      }
       
       const response = await fetch(`${getApiUrl()}/admin/questions/load-json`, {
         method: 'POST',
@@ -731,17 +763,27 @@ const AdminPanel = () => {
         body: JSON.stringify({ questions: questionsData }),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        const result = await response.json();
-        showMessage(`Loaded ${result.count} questions from JSON!`, true);
+        if (result.skipped && result.skipped > 0) {
+          showMessage(`Loaded ${result.count} questions successfully. ${result.skipped} questions skipped. Check console for details.`, true);
+          if (result.errors && result.errors.length > 0) {
+            console.warn('Skipped questions:', result.errors);
+          }
+        } else {
+          showMessage(`Successfully loaded ${result.count} questions from JSON!`, true);
+        }
         setJsonData('');
         loadData();
       } else {
-        showMessage('Failed to load questions from JSON', false);
+        const errorMsg = result.message || result.error || 'Failed to load questions from JSON';
+        showMessage(errorMsg, false);
+        console.error('Backend error:', result);
       }
     } catch (error) {
       console.error('Error loading JSON questions:', error);
-      showMessage('Invalid JSON format', false);
+      showMessage(`Error: ${error.message || 'Failed to load questions from JSON'}`, false);
     }
   };
 
@@ -1000,7 +1042,7 @@ const AdminPanel = () => {
     setQuestions([]);
     setUsers([]);
     setJsonData('');
-    setMessage('');
+    setMessage(null);
     setShowAddQuestion(false);
     setEditingQuestion(null);
     setNewQuestion({
@@ -1017,7 +1059,7 @@ const AdminPanel = () => {
           <LoginLogo src={magicornLogo} alt="Magicorn Logo" />
           <LoginForm>
             <Title>AWS Quiz Challenge Panel</Title>
-            {message && <Message success={message.success}>{message.text}</Message>}
+            {message && <Message $success={message.success ?? true}>{message.text}</Message>}
             <form onSubmit={login}>
               <Input
                 type="text"
@@ -1054,7 +1096,7 @@ const AdminPanel = () => {
           <LogoutButton onClick={logout}>Logout</LogoutButton>
         </Header>
 
-        {message && <Message success={message.success}>{message.text}</Message>}
+        {message && <Message $success={message.success}>{message.text}</Message>}
 
         <StatsGrid>
           <StatCard>

@@ -407,23 +407,81 @@ class Database {
     try {
       console.log(`Loading ${questions.length} questions from data...`);
       
+      // Get existing questions to find max ID
+      const scanCommand = new ScanCommand({
+        TableName: this.QUESTIONS_TABLE,
+        ProjectionExpression: 'id'
+      });
+      
+      const existingResult = await this.docClient.send(scanCommand);
+      const existingQuestions = existingResult.Items || [];
+      const existingIds = new Set(existingQuestions.map(q => q.id));
+      const maxId = existingQuestions.length > 0 ? Math.max(...existingQuestions.map(q => q.id)) : 0;
+      
+      let nextId = maxId + 1;
+      let loadedCount = 0;
+      let skippedCount = 0;
+      const errors = [];
+      
       for (const question of questions) {
-        const command = new PutCommand({
-          TableName: this.QUESTIONS_TABLE,
-          Item: {
-            id: question.id,
-            question: question.question,
-            options: question.options,
-            answer: question.answer,
-            active: true
+        try {
+          // Validate question structure
+          if (!question.question || !question.options || !question.answer) {
+            errors.push(`Question missing required fields: ${JSON.stringify(question)}`);
+            skippedCount++;
+            continue;
           }
-        });
-        
-        await this.docClient.send(command);
+          
+          if (!Array.isArray(question.options) || question.options.length !== 4) {
+            errors.push(`Question ${question.id || 'unknown'}: options must be an array with 4 items`);
+            skippedCount++;
+            continue;
+          }
+          
+          // Check if ID already exists, if so assign new ID
+          let questionId = question.id;
+          if (existingIds.has(questionId)) {
+            console.log(`ID ${questionId} already exists, assigning new ID: ${nextId}`);
+            questionId = nextId;
+            nextId++;
+          } else {
+            existingIds.add(questionId);
+            if (questionId > maxId) {
+              nextId = questionId + 1;
+            }
+          }
+          
+          const command = new PutCommand({
+            TableName: this.QUESTIONS_TABLE,
+            Item: {
+              id: questionId,
+              question: question.question.trim(),
+              options: question.options.map(opt => opt.trim()),
+              answer: question.answer.trim(),
+              active: true
+            }
+          });
+          
+          await this.docClient.send(command);
+          loadedCount++;
+        } catch (error) {
+          console.error(`Error loading question ${question.id || 'unknown'}:`, error);
+          errors.push(`Question ${question.id || 'unknown'}: ${error.message}`);
+          skippedCount++;
+        }
       }
       
-      console.log('Questions loaded from data successfully');
-      return questions;
+      console.log(`Questions loaded: ${loadedCount} successful, ${skippedCount} skipped`);
+      if (errors.length > 0) {
+        console.warn('Errors encountered:', errors);
+      }
+      
+      return {
+        loaded: loadedCount,
+        skipped: skippedCount,
+        errors: errors,
+        total: questions.length
+      };
     } catch (error) {
       console.error('Error loading questions from data:', error);
       throw error;

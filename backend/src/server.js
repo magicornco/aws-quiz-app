@@ -119,14 +119,38 @@ app.post('/api/admin/questions/load-json', authenticateAdmin, async (req, res) =
   try {
     const { questions } = req.body;
     if (!questions || !Array.isArray(questions)) {
-      return res.status(400).json({ error: 'Invalid questions data' });
+      return res.status(400).json({ error: 'Invalid questions data. Expected an array of questions.' });
     }
     
-    const loadedQuestions = await database.loadQuestionsFromData(questions);
-    res.json({ success: true, message: `Loaded ${loadedQuestions.length} questions`, count: loadedQuestions.length });
+    if (questions.length === 0) {
+      return res.status(400).json({ error: 'Questions array is empty' });
+    }
+    
+    const result = await database.loadQuestionsFromData(questions);
+    
+    if (result.errors && result.errors.length > 0) {
+      return res.status(200).json({ 
+        success: true, 
+        message: `Loaded ${result.loaded} questions successfully. ${result.skipped} questions skipped.`,
+        count: result.loaded,
+        skipped: result.skipped,
+        errors: result.errors,
+        total: result.total
+      });
+    }
+    
+    res.json({ 
+      success: true, 
+      message: `Successfully loaded ${result.loaded} questions!`,
+      count: result.loaded,
+      total: result.total
+    });
   } catch (error) {
     console.error('Error loading questions from JSON:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ 
+      error: 'Internal server error',
+      message: error.message || 'Failed to load questions from JSON'
+    });
   }
 });
 
