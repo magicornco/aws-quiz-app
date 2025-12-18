@@ -935,8 +935,8 @@ function HomePage({ onStartGame, leaderboard = [] }) {
           <Logo src={magicornLogo} alt="Magicorn Logo" />
         </LogoContainer>
         
-        <Title>Game Quiz</Title>
-        <Subtitle>The Ultimate Game Industry Conference</Subtitle>
+        <Title>AWS Quiz Challenge</Title>
+        <Subtitle>AWS Cloud & AI Summit – Ankara</Subtitle>
         <TimeInfo>⏱️ 1 minute to answer 5 questions</TimeInfo>
         
         <FormContainer>
