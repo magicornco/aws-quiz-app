@@ -62,10 +62,18 @@ console.log(`✅ Admin credentials configured for user: ${ADMIN_USERNAME}`);
 const authenticateAdmin = (req, res, next) => {
   const { username, password } = req.body;
   
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+  
+  const trimmedUsername = username.trim();
+  const trimmedPassword = password.trim();
+  
+  if (trimmedUsername === ADMIN_USERNAME && trimmedPassword === ADMIN_PASSWORD) {
     req.isAdmin = true;
     next();
   } else {
+    console.warn(`Failed admin login attempt for username: ${trimmedUsername}`);
     res.status(401).json({ error: 'Invalid admin credentials' });
   }
 };
@@ -78,15 +86,28 @@ const authenticateAdminHeader = (req, res, next) => {
     return res.status(401).json({ error: 'Missing or invalid authorization header' });
   }
   
-  const base64Credentials = authHeader.split(' ')[1];
-  const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-  const [username, password] = credentials.split(':');
-  
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-    req.isAdmin = true;
-    next();
-  } else {
-    res.status(401).json({ error: 'Invalid admin credentials' });
+  try {
+    const base64Credentials = authHeader.split(' ')[1];
+    const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
+    const [username, password] = credentials.split(':');
+    
+    if (!username || !password) {
+      return res.status(401).json({ error: 'Invalid authorization header format' });
+    }
+    
+    const trimmedUsername = username.trim();
+    const trimmedPassword = password.trim();
+    
+    if (trimmedUsername === ADMIN_USERNAME && trimmedPassword === ADMIN_PASSWORD) {
+      req.isAdmin = true;
+      next();
+    } else {
+      console.warn(`Failed admin authentication attempt for username: ${trimmedUsername}`);
+      res.status(401).json({ error: 'Invalid admin credentials' });
+    }
+  } catch (error) {
+    console.error('Error parsing authorization header:', error);
+    res.status(401).json({ error: 'Invalid authorization header' });
   }
 };
 
